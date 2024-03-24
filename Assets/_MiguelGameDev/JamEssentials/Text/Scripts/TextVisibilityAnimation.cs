@@ -238,12 +238,13 @@ namespace MiguelGameDev
 
         private bool IsANumberSymbol()
         {
-            if (Text.textInfo.characterCount <= Text.maxVisibleCharacters)
+            int nextCharacterIndex = Text.maxVisibleCharacters + 1;
+            if (Text.textInfo.characterCount <= nextCharacterIndex)
             {
                 return false;
             }
 
-            return int.TryParse(Text.textInfo.characterInfo[Text.maxVisibleCharacters + 1].character.ToString(), out int number);
+            return int.TryParse(Text.textInfo.characterInfo[nextCharacterIndex].character.ToString(), out int number);
         }
 
         public void Clear()

@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using MiguelGameDev.Generic.Extensions;
 using System;
@@ -29,16 +30,16 @@ namespace MiguelGameDev.Anastasis
             _cameraTransform.position = _titlePosition;
         }
 
-        public Task MoveToTitlePosition(float speed)
+        public UniTask MoveToTitlePosition(float speed)
         {
             var duration = Vector3.Distance(_cameraTransform.position, _titlePosition) / speed;
-            return _cameraTransform.DOMove(_titlePosition, duration).SetEase(Ease.InOutQuad).AsATask();
+            return _cameraTransform.DOMove(_titlePosition, duration).SetEase(Ease.InOutQuad).AsAUniTask();
         }
 
-        public Task MoveToGamePosition(float speed)
+        public UniTask MoveToGamePosition(float speed)
         {
             var duration = Vector3.Distance(_cameraTransform.position, _gamePosition) / speed;
-            return _cameraTransform.DOMove(_gamePosition, duration).SetEase(Ease.InOutQuad).AsATask();
+            return _cameraTransform.DOMove(_gamePosition, duration).SetEase(Ease.InOutQuad).AsAUniTask();
         }
     }
 }

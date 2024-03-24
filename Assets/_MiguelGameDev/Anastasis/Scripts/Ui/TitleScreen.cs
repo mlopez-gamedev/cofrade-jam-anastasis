@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using MiguelGameDev.Generic.Extensions;
 using System.Threading.Tasks;
@@ -31,9 +32,9 @@ namespace MiguelGameDev.Anastasis
             _checkInput = true;
         }
 
-        public async Task Hide()
+        public async UniTask Hide()
         {
-            await _canvasGroup.DOFade(0f, 1f).AsATask();
+            await _canvasGroup.DOFade(0f, 1f).AsAUniTask();
             _canvasGroup.gameObject.SetActive(false);
         }
 

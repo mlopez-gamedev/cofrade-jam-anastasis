@@ -1,5 +1,5 @@
 ﻿using System.Threading.Tasks;
-//using Cysharp.Threading.Tasks;
+using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using UnityEngine;
 
@@ -17,8 +17,8 @@ namespace MiguelGameDev.Generic.Extensions
                 {
                     return;
                 }
-                taskCompletionSource?.SetResult(true);
                 finished = true;
+                taskCompletionSource?.SetResult(true);
             });
 
             tween.OnKill(() =>
@@ -27,26 +27,37 @@ namespace MiguelGameDev.Generic.Extensions
                 {
                     return;
                 }
-                taskCompletionSource?.SetResult(false);
                 finished = true;
+                taskCompletionSource?.SetResult(false);
             });
 
-            return Task.Run(() => taskCompletionSource.Task);
+            return taskCompletionSource.Task;
         }
 
-        //public static UniTask<bool> AsAUniTask(this Tween tween)
-        //{
-        //    var taskCompletionSource = new UniTaskCompletionSource<bool>();
-        //    tween.OnComplete(() =>
-        //    {
-        //        taskCompletionSource.TrySetResult(true);
-        //    });
-        //    tween.OnKill(() =>
-        //    {
-        //        taskCompletionSource.TrySetResult(false);
-        //    });
+        public static UniTask<bool> AsAUniTask(this Tween tween)
+        {
+            var finished = false;
+            var taskCompletionSource = new UniTaskCompletionSource<bool>();
+            tween.OnComplete(() =>
+            {
+                if (finished)
+                {
+                    return;
+                }
+                finished = true;
+                taskCompletionSource.TrySetResult(true);
+            });
+            tween.OnKill(() =>
+            {
+                if (finished)
+                {
+                    return;
+                }
+                finished = true;
+                taskCompletionSource.TrySetResult(false);
+            });
 
-        //    return UniTask.RunOnThreadPool(() => taskCompletionSource.Task);
-        //}
+            return taskCompletionSource.Task;
+        }
     }
 }
