@@ -1,0 +1,87 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f0b0c553be8edd4682e9180fdd13e37, type: 3}
+  m_Name: I2Languages
+  m_EditorClassIdentifier: 
+  mSource:
+    UserAgreesToHaveItOnTheScene: 0
+    UserAgreesToHaveItInsideThePluginsFolder: 0
+    GoogleLiveSyncIsUptoDate: 0
+    mTerms:
+    - Term: Title.StartGame
+      TermType: 0
+      Description: 
+      Languages:
+      - Press any key to Save Humanity
+      - Presiona cualquier tecla para Salvar a la Humanidad
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Story.Intro
+      TermType: 0
+      Description: 
+      Languages:
+      - 'More than 2,000 years ago, Yahweh sent his son Jesus Christ on a mission
+        that would forever change the destiny of humanity: access Hades, where the
+        unbaptized awaited resurrection.
+
+        There he had to defeat death, take
+        with him all the righteous and save us from original sin.
+
+        In order
+        to access hell, the Son had to be born and die as another man.
+
+        Following
+        his Father''s Divine Plan, Jesus Christ died crucified and was resurrected
+        on the third day. What very few know is what happened during that time in
+        Hades.
+
+        This is the untold story of the Anastasis or Descensus ad
+        inferos: the descent of Jesus Christ into hell.'
+      - "Hace m\xE1s de 2.000 a\xF1os, Yahveh envi\xF3 a su hijo Jesucristo en una
+        misi\xF3n que cambiar\xEDa para siempre el destino de la humanidad: acceder
+        al Hades, donde aguardaban la resurrecci\xF3n los no bautizados.\nAll\xED
+        deb\xEDa vencer a la muerte, llevar consigo a todos los justos y salvarnos
+        del pecado original.\nPara poder acceder al infierno, el Hijo deb\xEDa nacer
+        y morir como un hombre m\xE1s.\r\nSiguiendo el Plan Divino de su Padre, Jesucristo
+        muri\xF3 crucificado y al tercer d\xEDa resucit\xF3. Lo que muy pocos conocen
+        es lo que durante ese tiempo ocurri\xF3 en el Hades.\nEsta es la historia
+        jam\xE1s contada de la Anastasis o Descensus ad inferos: el descenso de Jesucristo
+        a los infiernos."
+      Flags: 0000
+      Languages_Touch: []
+    CaseInsensitiveTerms: 0
+    OnMissingTranslation: 1
+    mTerm_AppName: 
+    mLanguages:
+    - Name: English
+      Code: en
+      Flags: 0
+    - Name: Spanish
+      Code: es
+      Flags: 0
+    IgnoreDeviceLanguage: 0
+    _AllowUnloadingLanguages: 0
+    Google_WebServiceURL: https://script.google.com/macros/s/AKfycby7Z1NeRJuviHmJ8k9pIw8KB0DfYgfDkoxOqMyCitRaRXHUZgdmROB2vHxHblgK0IQaEA/exec
+    Google_SpreadsheetKey: 19_6I7U37VQj85MK_-VDOyrctyHmV2PQUvcU4Vh1WBrQ
+    Google_SpreadsheetName: I2Loc cofrade-jam Localization
+    Google_LastUpdatedVersion: 
+    Google_Password: change_this
+    GoogleUpdateFrequency: 3
+    GoogleInEditorCheckFrequency: 2
+    GoogleUpdateSynchronization: 1
+    GoogleUpdateDelay: 0
+    Assets: []
+    Spreadsheet_LocalFileName: 
+    Spreadsheet_LocalCSVSeparator: ','
+    Spreadsheet_LocalCSVEncoding: utf-8
+    Spreadsheet_SpecializationAsRows: 1
+    Spreadsheet_SortRows: 1
