@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58ee8a9a99115d848bcf9bde71c7d777, type: 3}
+  m_Name: BlessingAbility
+  m_EditorClassIdentifier: 
+  _key: Blessing
+  _type: 0
+  _titleTerm: Ability.Blessing.Title
+  _descriptionTerm: Ability.Blessing.Description
+  _icon: {fileID: 21300000, guid: 0ff5ba6aa9b08494bb14a8728ee51d9c, type: 3}
+  _maxLevel: 10

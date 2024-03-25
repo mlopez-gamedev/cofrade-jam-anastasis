@@ -7,16 +7,20 @@ public class PlayerFacade : MonoBehaviour
     [SerializeField] CharacterAnimation _animation;
     [SerializeField] CharacterAudio _audio;
     [SerializeField] CharacterDamageReceiver _damageReceiver;
+    [SerializeField] CharacterAbilities _abilities;
 
     private CharacterMotor _motor;
     private CharacterHealth _health;
     private UnityLegacyCharacterInput _input;
 
+    public CharacterAbilities Abilities => _abilities;
 
-    public void Setup(PlayerAttributes playerAttributes)
+    public void Setup(PlayerAttributes playerAttributes, AbilityFactory abilityFactory)
     {
+
         _motor = new CharacterMotor(_characterController, playerAttributes.Speed);
         _health = new CharacterHealth(playerAttributes.MaxHealth, playerAttributes.CurrentHealth);
+        _abilities = new CharacterAbilities(abilityFactory);
 
         var moveUseCase = new MoveCharacterUseCase(_motor, _animation);
         
@@ -43,5 +47,15 @@ public class PlayerFacade : MonoBehaviour
     {
         _input.Update();
         _motor.Update();
+    }
+
+    public void Pause()
+    {
+
+    }
+
+    public void Resume()
+    {
+
     }
 }

@@ -13,8 +13,10 @@ namespace MiguelGameDev.Anastasis
         private readonly CameraPositioner _camera;
         private readonly FollowerCamera _followerCamera;
         private readonly PlayerFacade _player;
+        private readonly PlayerPickAbilityUseCase _pickAbilityUseCase;
 
-        public InitGameUseCase(TitleScreen titleScreen, StoryScreen storyScreen, TutorialScreen tutorialScreen, CameraPositioner camera, FollowerCamera followerCamera, PlayerFacade player)
+        public InitGameUseCase(TitleScreen titleScreen, StoryScreen storyScreen, TutorialScreen tutorialScreen, 
+                CameraPositioner camera, FollowerCamera followerCamera, PlayerFacade player, PlayerPickAbilityUseCase pickAbilityUseCase)
         {
             _titleScreen = titleScreen;
             _storyScreen = storyScreen;
@@ -22,6 +24,7 @@ namespace MiguelGameDev.Anastasis
             _camera = camera;
             _followerCamera = followerCamera;
             _player = player;
+            _pickAbilityUseCase = pickAbilityUseCase;
         }
 
         public async void InitGame()
@@ -32,6 +35,7 @@ namespace MiguelGameDev.Anastasis
             _player.WakeUp();
             await UniTask.Delay(1000);
             await _tutorialScreen.ShowTutorial();
+            await _pickAbilityUseCase.PickInitialAbility();
             StartGame();
         }
 

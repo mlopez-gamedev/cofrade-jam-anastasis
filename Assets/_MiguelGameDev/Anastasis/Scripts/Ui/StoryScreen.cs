@@ -81,7 +81,7 @@ namespace MiguelGameDev.Anastasis
                 return;
             }
 
-            if (Input.anyKeyDown)
+            if (Input.GetButtonDown("Action"))
             {
                 if (!_storyVisibilityAnimation.IsComplete)
                 {

@@ -1,7 +1,6 @@
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using MiguelGameDev.Generic.Extensions;
-using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
 
@@ -19,6 +18,7 @@ namespace MiguelGameDev.Anastasis
         private void Awake()
         {
             _nextText.gameObject.SetActive(false);
+            _canvasGroup.gameObject.SetActive(true);
         }
 
         public void Setup(InitGameUseCase initGameUseCase)
@@ -46,7 +46,7 @@ namespace MiguelGameDev.Anastasis
                 return;
             }
 
-            if (Input.anyKeyDown)
+            if (Input.GetButtonDown("Action"))
             {
                 _checkInput = false;
                 _initGameUseCase.InitGame();

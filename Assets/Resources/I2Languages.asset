@@ -58,6 +58,48 @@ MonoBehaviour:
         a los infiernos."
       Flags: 0000
       Languages_Touch: []
+    - Term: Game.PickAbility
+      TermType: 0
+      Description: 
+      Languages:
+      - Choose a skill and press <b>Action</b> to continue
+      - "Elige una habilidad y pulsa <b>Acci\xF3n</b> para continuar"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Ability.Blessing.Title
+      TermType: 0
+      Description: 
+      Languages:
+      - "Blessing\t"
+      - Bendiciones
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Ability.Blessing.Description
+      TermType: 0
+      Description: 
+      Languages:
+      - Jesus Christ distributes blessings and deals area damage to enemies around
+        him.
+      - "Jesucristo reparte bendiciones y hace da\xF1o de \xE1rea a los enemigos
+        a su alrededor."
+      Flags: 0000
+      Languages_Touch: []
+    - Term: New
+      TermType: 0
+      Description: 
+      Languages:
+      - New!
+      - "\xA1Nueva!"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Level
+      TermType: 0
+      Description: 
+      Languages:
+      - Lv. {0}
+      - Nv. {0}
+      Flags: 0000
+      Languages_Touch: []
     CaseInsensitiveTerms: 0
     OnMissingTranslation: 1
     mTerm_AppName: 

@@ -1,7 +1,6 @@
 ﻿using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using MiguelGameDev.Generic.Extensions;
-using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
 
@@ -37,12 +36,12 @@ namespace MiguelGameDev.Anastasis
         {
             _canvasGroup.alpha = 0;
             _canvasGroup.gameObject.SetActive(true);
-            await _canvasGroup.DOFade(1f, 1f).AsAUniTask();
+            await _canvasGroup.DOFade(1f, 0.2f).AsAUniTask();
         }
 
         private async UniTask Hide()
         {
-            await _canvasGroup.DOFade(0f, 1f).AsAUniTask();
+            await _canvasGroup.DOFade(0f, 0.2f).AsAUniTask();
             _canvasGroup.gameObject.SetActive(false);
         }
 
@@ -53,7 +52,7 @@ namespace MiguelGameDev.Anastasis
                 return;
             }
 
-            if (Input.anyKeyDown)
+            if (Input.GetButtonDown("Action"))
             {
                 _checkInput = false;
                 _nextText.gameObject.SetActive(false);
