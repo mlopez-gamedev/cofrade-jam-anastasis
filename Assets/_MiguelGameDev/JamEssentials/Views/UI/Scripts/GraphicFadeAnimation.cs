@@ -8,7 +8,7 @@ namespace MiguelGameDev
     {
         [SerializeField] float _fade = 0.5f;
         [SerializeField] float _duration = 1f;
-
+        [SerializeField] bool _unescaleTime = true;
 
         private Graphic _graphic;
         private float _defaultAlpha;
@@ -46,7 +46,7 @@ namespace MiguelGameDev
         private void OnEnable()
         {
             _defaultAlpha = Graphic.color.a;
-            _tween = Graphic.DOFade(_fade, _duration).SetEase(Ease.InOutSine).SetLoops(-1, LoopType.Yoyo);
+            _tween = Graphic.DOFade(_fade, _duration).SetUpdate(_unescaleTime).SetEase(Ease.InOutSine).SetLoops(-1, LoopType.Yoyo);
         }
     }
 }

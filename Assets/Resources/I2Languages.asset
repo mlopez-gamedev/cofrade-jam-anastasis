@@ -53,6 +53,26 @@ MonoBehaviour:
       - Anima Christi
       Flags: 0000
       Languages_Touch: []
+    - Term: Ability/Compassion.Description
+      TermType: 0
+      Description: 
+      Languages:
+      - '"Father! Forgive my sins, fill my heart with hope"
+
+        Recovers all
+        health.'
+      - "\"\xA1Padre! Perdona mis pecados, llena mi coraz\xF3n de esperanza\"\nRecupera
+        toda la salud."
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Ability/Compassion.Title
+      TermType: 0
+      Description: 
+      Languages:
+      - Compassion
+      - Piedad
+      Flags: 0000
+      Languages_Touch: []
     - Term: Ability/CrownOfThorns.Description
       TermType: 0
       Description: 
@@ -238,12 +258,13 @@ MonoBehaviour:
       - Derrota a los demonios
       Flags: 0000
       Languages_Touch: []
-    - Term: Tutorial.UseYourPower.Header
+    - Term: Tutorial.DefeatTheLords.Content
       TermType: 0
       Description: 
       Languages:
-      - Unleash your sacred power
-      - Desata tu poder divino
+      - Break the gates of hell, free the souls of the righteous and ascend to heaven.
+      - Quiebra las puertas del infierno, libera las almas de los justos y asciende
+        a los cielos.
       Flags: 0000
       Languages_Touch: []
     - Term: Tutorial.DefeatTheLords.Header
@@ -262,13 +283,12 @@ MonoBehaviour:
       - "Cada habilidad es diferente y se autoejecuta. Comb\xEDnalas sabiamente."
       Flags: 0000
       Languages_Touch: []
-    - Term: Tutorial.DefeatTheLords.Content
+    - Term: Tutorial.UseYourPower.Header
       TermType: 0
       Description: 
       Languages:
-      - Break the gates of hell, free the souls of the righteous and ascend to heaven.
-      - Quiebra las puertas del infierno, libera las almas de los justos y asciende
-        a los cielos.
+      - Unleash your sacred power
+      - Desata tu poder divino
       Flags: 0000
       Languages_Touch: []
     CaseInsensitiveTerms: 0
@@ -286,7 +306,7 @@ MonoBehaviour:
     Google_WebServiceURL: https://script.google.com/macros/s/AKfycby7Z1NeRJuviHmJ8k9pIw8KB0DfYgfDkoxOqMyCitRaRXHUZgdmROB2vHxHblgK0IQaEA/exec
     Google_SpreadsheetKey: 19_6I7U37VQj85MK_-VDOyrctyHmV2PQUvcU4Vh1WBrQ
     Google_SpreadsheetName: I2Loc cofrade-jam Localization
-    Google_LastUpdatedVersion: 1711560027881
+    Google_LastUpdatedVersion: 1711654663784
     Google_Password: change_this
     GoogleUpdateFrequency: 3
     GoogleInEditorCheckFrequency: 2

@@ -4,6 +4,7 @@
     {
         Attack,
         Support,
-        Buff
+        Buff,
+        FullHealing
     }
 }

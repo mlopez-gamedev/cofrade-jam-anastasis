@@ -11,7 +11,6 @@
 
         public void PlayerLevelUp()
         {
-            // effect
             // stop
             // check if ability available
             //    pick and apply ability

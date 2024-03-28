@@ -22,8 +22,6 @@ namespace MiguelGameDev.Anastasis
 
         private bool _checkInput;
 
-        private InitGameUseCase _initGameUseCase;
-
         private void Awake()
         {
             _canvasGroup.gameObject.SetActive(false);
@@ -64,12 +62,12 @@ namespace MiguelGameDev.Anastasis
         {
             _canvasGroup.alpha = 0;
             _canvasGroup.gameObject.SetActive(true);
-            await _canvasGroup.DOFade(1f, 0.2f).AsAUniTask();
+            await _canvasGroup.DOFade(1f, 0.2f).SetUpdate(true).AsAUniTask();
         }
 
         private async UniTask Hide()
         {
-            await _canvasGroup.DOFade(0f, 0.2f).AsAUniTask();
+            await _canvasGroup.DOFade(0f, 0.2f).SetUpdate(true).AsAUniTask();
             _canvasGroup.gameObject.SetActive(false);
         }
 

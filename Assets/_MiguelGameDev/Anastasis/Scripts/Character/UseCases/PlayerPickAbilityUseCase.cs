@@ -17,16 +17,42 @@ namespace MiguelGameDev.Anastasis
             _abilityCatalog = abilityCatalog;
         }
 
-        public UniTask PickInitialAbility(CharacterAbilities characterAbilities)
+        public async UniTask PickInitialAbility(CharacterAbilities characterAbilities)
         {
+            Time.timeScale = 0;
             var availableAbilities = _abilityCatalog.GetInitialAbilities();
-            return PickAbility(characterAbilities, availableAbilities);
+            await PickAbility(characterAbilities, availableAbilities);
+            Time.timeScale = 1f;
         }
 
-        public UniTask PickRandomAbility(CharacterAbilities characterAbilities)
+        public async UniTask PickRandomAbility(CharacterAbilities characterAbilities)
         {
-            var availableAbilities = _abilityCatalog.GetInitialAbilities();
-            return PickAbility(characterAbilities, availableAbilities);
+            Time.timeScale = 0;
+            var availableAbilities = _abilityCatalog.GetAvailableAbilitiesFor(characterAbilities, out AbilityConfig fullHealingAbility);
+            await PickAbility(characterAbilities, availableAbilities, fullHealingAbility);
+            Time.timeScale = 1f;
+        }
+
+        private async UniTask PickAbility(CharacterAbilities characterAbilities, List<AbilityConfig> availableAbilities, AbilityConfig fullHealingAbility)
+        {
+            if (fullHealingAbility == null)
+            {
+                await PickAbility(characterAbilities, availableAbilities);
+                return;
+            }
+
+            var abilities = GetRandomAbilities(ABILITIES_AMOUNT - 1, availableAbilities);
+            var abilitiesList = new List<AbilityConfig>(abilities)
+            {
+                fullHealingAbility
+            };
+
+            var ability = await _pickAbilityScreen.PickAbility(characterAbilities, abilitiesList.ToArray());
+            if (characterAbilities.AddAbility(ability))
+            {
+                // is new;
+            }
+            // is a upgrade
         }
 
         private async UniTask PickAbility(CharacterAbilities characterAbilities, List<AbilityConfig> availableAbilities)

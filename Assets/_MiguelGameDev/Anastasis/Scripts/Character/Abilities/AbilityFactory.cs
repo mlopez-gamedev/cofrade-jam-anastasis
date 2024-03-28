@@ -32,6 +32,14 @@
             {
                 return new SacramentsAbility(characterAbilities, abilityConfig as SacramentsAbilityConfig);
             }
+            else if (abilityConfig is PrayAbilityConfig)
+            {
+                return new PrayAbility(characterAbilities, abilityConfig as PrayAbilityConfig);
+            }
+            else if (abilityConfig is CompassionAbilityConfig)
+            {
+                return new CompassionAbility(characterAbilities, abilityConfig as CompassionAbilityConfig);
+            }
 
             return null;
         }

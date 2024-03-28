@@ -17,4 +17,28 @@ MonoBehaviour:
   _titleTerm: Ability/Pray.Title
   _descriptionTerm: Ability/Pray.Description
   _icon: {fileID: 21300000, guid: cb37d23925a1ba34bae3b4f1867747bf, type: 3}
-  _maxLevel: 10
+  _prayAvatar: {fileID: 2783215415736174617, guid: 2413496786f0fc1469a3399ec6f281c7,
+    type: 3}
+  _levels:
+  - _cooldown: 0
+    _heal: 0
+  - _cooldown: 3
+    _heal: 1
+  - _cooldown: 2.75
+    _heal: 1
+  - _cooldown: 2.5
+    _heal: 1
+  - _cooldown: 2.5
+    _heal: 2
+  - _cooldown: 2.5
+    _heal: 3
+  - _cooldown: 2
+    _heal: 3
+  - _cooldown: 1.75
+    _heal: 4
+  - _cooldown: 1.5
+    _heal: 5
+  - _cooldown: 0.5
+    _heal: 5
+  - _cooldown: 0.25
+    _heal: 6
