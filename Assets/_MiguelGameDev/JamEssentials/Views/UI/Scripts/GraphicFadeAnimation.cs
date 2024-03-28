@@ -35,12 +35,12 @@ namespace MiguelGameDev
 
         private void OnDisable()
         {
-            Graphic.color.SetAlpha(_defaultAlpha);
             if (_tween != null)
             {
                 _tween.Kill();
                 _tween = null;
             }
+            Graphic.SetAlpha(_defaultAlpha);
         }
 
         private void OnEnable()

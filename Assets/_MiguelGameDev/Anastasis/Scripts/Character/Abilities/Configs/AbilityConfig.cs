@@ -1,16 +1,16 @@
-﻿using UnityEngine;
+﻿using Sirenix.OdinInspector;
+using UnityEngine;
 
 namespace MiguelGameDev.Anastasis
 {
 
     public abstract class AbilityConfig : ScriptableObject
     {
-        [SerializeField] private string _key;
-        [SerializeField] private EAbilityType _type;
-        [SerializeField, I2.Loc.TermsPopup("Ability.")] private string _titleTerm;
-        [SerializeField, I2.Loc.TermsPopup("Ability.")] private string _descriptionTerm;
-        [SerializeField] private Sprite _icon;
-        [SerializeField] private int _maxLevel = 10;
+        [SerializeField, BoxGroup("Ability")] private string _key;
+        [SerializeField, BoxGroup("Ability")] private EAbilityType _type;
+        [SerializeField, BoxGroup("Ability"), I2.Loc.TermsPopup(".Title")] private string _titleTerm;
+        [SerializeField, BoxGroup("Ability"), I2.Loc.TermsPopup(".Description")] private string _descriptionTerm;
+        [SerializeField, BoxGroup("Ability"), PreviewField(Height = 256)] private Sprite _icon;
 
         public string Key => _key;
         public int Id => _key.GetHashCode();
@@ -18,6 +18,5 @@ namespace MiguelGameDev.Anastasis
         public string TitleTerm => _titleTerm;
         public string DescriptionTerm => _descriptionTerm;
         public Sprite Icon => _icon;
-        public int MaxLevel => _maxLevel;
     }
 }

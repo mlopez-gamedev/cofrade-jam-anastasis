@@ -3,7 +3,9 @@
 
     public class HostAbility : Ability
     {
-        public HostAbility(HostAbilityConfig config) : base(config)
+        public override int MaxLevel => throw new System.NotImplementedException();
+
+        public HostAbility(CharacterAbilities owner, HostAbilityConfig config) : base(owner, config)
         {
 
         }
@@ -13,7 +15,7 @@
 
         }
 
-        public override bool TryExecute()
+        public override bool Update()
         {
             return false;
         }

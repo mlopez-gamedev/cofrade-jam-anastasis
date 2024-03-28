@@ -2,7 +2,9 @@
 {
     public class HolySpiritAbility : Ability
     {
-        public HolySpiritAbility(HolySpiritAbilityConfig config) : base(config)
+        public override int MaxLevel => throw new System.NotImplementedException();
+
+        public HolySpiritAbility(CharacterAbilities owner, HolySpiritAbilityConfig config) : base(owner, config)
         {
 
         }
@@ -12,7 +14,7 @@
 
         }
 
-        public override bool TryExecute()
+        public override bool Update()
         {
             return false;
         }

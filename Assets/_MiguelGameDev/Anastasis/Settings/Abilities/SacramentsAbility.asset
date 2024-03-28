@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _key: Sacraments
   _type: 0
-  _titleTerm: 
-  _descriptionTerm: 
-  _icon: {fileID: 0}
+  _titleTerm: Ability/Sacraments.Title
+  _descriptionTerm: Ability/Sacraments.Description
+  _icon: {fileID: 21300000, guid: 59c808227fd98c14683c6a946be9e77e, type: 3}
   _maxLevel: 10

@@ -1,3 +1,4 @@
+using Sirenix.OdinInspector;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,18 +9,20 @@ namespace MiguelGameDev.Anastasis
 
     public class CharacterAbilities
     {
-        private AbilityCatalog _catalog;
-        private Dictionary<int, Ability> _abilities;
+        private readonly Transform _transform;
         private readonly AbilityFactory _factory;
+        private readonly ActivateCrownOfThornsUseCase _activateCrownOfThornsUseCase;
 
-        public void Setup(AbilityCatalog catalog)
-        {
-            _catalog = catalog;
-        }
+        [ShowInInspector] private Dictionary<int, Ability> _abilities;
 
-        public CharacterAbilities(AbilityFactory factory)
+        public Transform Transform => _transform;
+        public ActivateCrownOfThornsUseCase ActivateCrownOfThornsUseCase => _activateCrownOfThornsUseCase;
+
+        public CharacterAbilities(Transform transform, AbilityFactory factory, ActivateCrownOfThornsUseCase activateCrownOfThornsUseCase)
         {
+            _transform = transform;
             _factory = factory;
+            _activateCrownOfThornsUseCase = activateCrownOfThornsUseCase;
             _abilities = new Dictionary<int, Ability>();
         }
 
@@ -60,7 +63,7 @@ namespace MiguelGameDev.Anastasis
             int abilityId = abilityConfig.Key.GetHashCode();
             if (!HasAbility(abilityId))
             {
-                var ability = _factory.CreateAbility(abilityConfig);
+                var ability = _factory.CreateAbility(this, abilityConfig);
                 Assert.IsNotNull(ability, $"Ability {abilityConfig.Key} not found");
                 _abilities.Add(abilityId, ability);
                 isNew = true;
@@ -78,7 +81,12 @@ namespace MiguelGameDev.Anastasis
         {
             foreach (Ability ability in _abilities.Values)
             {
-                ability.TryExecute();
+                if (ability.CurrentLevel == 0)
+                {
+                    continue;
+                }
+
+                ability.Update();
             }
         }
     }

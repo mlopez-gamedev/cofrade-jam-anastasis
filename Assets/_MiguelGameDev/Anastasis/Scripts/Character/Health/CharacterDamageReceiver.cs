@@ -3,7 +3,6 @@ using UnityEngine;
 
 namespace MiguelGameDev.Anastasis
 {
-
     public class CharacterDamageReceiver : MonoBehaviour
     {
         [ShowInInspector, HideInEditorMode] private FloatAttribute _invulnerabilityDuration;

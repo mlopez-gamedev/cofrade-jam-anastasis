@@ -12,13 +12,17 @@ namespace MiguelGameDev.Anastasis
         private readonly CharacterAudio _audio;
         private readonly CharacterDieUseCase _dieUseCase;
 
-        public TakeDamageUseCase(CharacterHealth health, CharacterMotor motor, CharacterInput characterInput, CharacterAnimation animation, CharacterAudio audio, CharacterDieUseCase dieUseCase)
+        private readonly CrownOfThornsAvatar _crownOfThornsAvatar;
+
+        public TakeDamageUseCase(CharacterHealth health, CharacterMotor motor, CharacterInput characterInput, CharacterAnimation animation, 
+                CharacterAudio audio, CharacterDieUseCase dieUseCase, CrownOfThornsAvatar crownOfThornsAvatar = null)
         {
             _health = health;
             _motor = motor;
             _characterInput = characterInput;
             _animation = animation;
             _audio = audio;
+            _crownOfThornsAvatar = crownOfThornsAvatar;
             _dieUseCase = dieUseCase;
         }
 
@@ -29,6 +33,7 @@ namespace MiguelGameDev.Anastasis
                 return false;
             }
 
+            _crownOfThornsAvatar.TryReturnDamage(damageInfo);
             Push(damageInfo.PushForce);
             Stunt(damageInfo.StuntDuration);
 
@@ -39,7 +44,7 @@ namespace MiguelGameDev.Anastasis
         {
             if (damage <= 0)
             {
-                return true;
+                return false;
             }
 
             // TODO: hurt effect (blood)

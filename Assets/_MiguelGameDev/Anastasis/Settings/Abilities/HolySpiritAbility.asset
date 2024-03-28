@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _key: HolySpirit
   _type: 0
-  _titleTerm: 
-  _descriptionTerm: 
-  _icon: {fileID: 0}
+  _titleTerm: Ability/HolySpirit.Title
+  _descriptionTerm: Ability/HolySpirit.Description
+  _icon: {fileID: 21300000, guid: 3f83e9627c501cc46917fccf3b66fe66, type: 3}
   _maxLevel: 10

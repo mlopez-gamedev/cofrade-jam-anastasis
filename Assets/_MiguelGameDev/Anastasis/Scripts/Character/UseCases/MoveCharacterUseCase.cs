@@ -2,7 +2,6 @@
 
 namespace MiguelGameDev.Anastasis
 {
-
     public class MoveCharacterUseCase
     {
         private readonly CharacterMotor _motor;

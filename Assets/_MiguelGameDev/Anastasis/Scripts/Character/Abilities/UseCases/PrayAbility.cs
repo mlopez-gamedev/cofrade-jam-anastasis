@@ -2,7 +2,9 @@
 {
     public class PrayAbility : Ability
     {
-        public PrayAbility(PrayAbilityConfig config) : base(config)
+        public override int MaxLevel => throw new System.NotImplementedException();
+
+        public PrayAbility(CharacterAbilities owner, PrayAbilityConfig config) : base(owner, config)
         {
 
         }
@@ -12,7 +14,7 @@
 
         }
 
-        public override bool TryExecute()
+        public override bool Update()
         {
             return false;
         }

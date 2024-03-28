@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _key: Pray
   _type: 1
-  _titleTerm: 
-  _descriptionTerm: 
-  _icon: {fileID: 0}
+  _titleTerm: Ability/Pray.Title
+  _descriptionTerm: Ability/Pray.Description
+  _icon: {fileID: 21300000, guid: cb37d23925a1ba34bae3b4f1867747bf, type: 3}
   _maxLevel: 10

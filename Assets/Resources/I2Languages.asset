@@ -15,14 +15,170 @@ MonoBehaviour:
   mSource:
     UserAgreesToHaveItOnTheScene: 0
     UserAgreesToHaveItInsideThePluginsFolder: 0
-    GoogleLiveSyncIsUptoDate: 0
+    GoogleLiveSyncIsUptoDate: 1
     mTerms:
-    - Term: Title.StartGame
+    - Term: Ability/Blessing.Description
       TermType: 0
       Description: 
       Languages:
-      - Press any key to Save Humanity
-      - Presiona cualquier tecla para Salvar a la Humanidad
+      - Jesus Christ distributes blessings and deals area damage to demons around
+        him.
+      - "Jesucristo reparte bendiciones y hace da\xF1o de \xE1rea a los demonios
+        a su alrededor."
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Ability/Blessing.Title
+      TermType: 0
+      Description: 
+      Languages:
+      - "Blessing\t"
+      - Bendiciones
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Ability/Blood.Description
+      TermType: 0
+      Description: 
+      Languages:
+      - This is the blood of the Covenant, which is shed for many. It increases the
+        life of whoever drinks from it.
+      - Esta es la sangre de la Alianza, que es derramada por muchos. Aumenta la
+        vida de quien beba de ella.
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Ability/Blood.Title
+      TermType: 0
+      Description: 
+      Languages:
+      - Anima Christi
+      - Anima Christi
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Ability/CrownOfThorns.Description
+      TermType: 0
+      Description: 
+      Languages:
+      - Symbol of humiliation, it returns part of the damage to whoever causes pain
+        to Jesus Christ.
+      - "S\xEDmbolo de humillaci\xF3n, devuelve parte del da\xF1o a quien cause dolor
+        a Jesucristo."
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Ability/CrownOfThorns.Title
+      TermType: 0
+      Description: 
+      Languages:
+      - Crown of Throns
+      - Corona de espinas
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Ability/HolyFire.Description
+      TermType: 0
+      Description: 
+      Languages:
+      - The Holy Light is invoked at a random point near Jesus Christ causing area
+        damage to the demons.
+      - "La Luz Sagrada se invoca en un punto aleatorio cercano a Jesucristo causando
+        da\xF1o de \xE1rea a los demonios."
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Ability/HolyFire.Title
+      TermType: 0
+      Description: 
+      Languages:
+      - Holy Light
+      - Luz Sagrada
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Ability/HolySpirit.Description
+      TermType: 0
+      Description: 
+      Languages:
+      - The Third Person flies around Jesus Christ, harming the demons he touches.
+      - "La Tercera Persona vuela alrededor de Jesucristo, da\xF1ando a los demonios
+        que toca."
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Ability/HolySpirit.Title
+      TermType: 0
+      Description: 
+      Languages:
+      - Holy Spirit
+      - "Esp\xEDritu Santo"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Ability/Host.Description
+      TermType: 0
+      Description: 
+      Languages:
+      - This is the body of Christ. It increases the power of whoever feeds on it.
+      - "Este es el cuerpo de Cristo. Aumenta el poder de quien se aliemnte de \xE9l."
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Ability/Host.Title
+      TermType: 0
+      Description: 
+      Languages:
+      - Corpus Christi
+      - Corpus Christi
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Ability/Pray.Description
+      TermType: 0
+      Description: 
+      Languages:
+      - Jesus Christ lives in constant prayer, which makes him regain life over time.
+      - "Jesucristo vive en una constante oraci\xF3n, que le hace recuperar vida
+        a lo largo del tiempo."
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Ability/Pray.Title
+      TermType: 0
+      Description: 
+      Languages:
+      - Pray
+      - "Oraci\xF3n"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Ability/Sacraments.Description
+      TermType: 0
+      Description: 
+      Languages:
+      - Jesus Christ casts sensitive signs of Divine Grace, causing pain to the demons
+        he touches.
+      - Jesucristo arroja signos sensibles de la Gracia Divina, causando dolor a
+        los demonios que toca.
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Ability/Sacraments.Title
+      TermType: 0
+      Description: 
+      Languages:
+      - Sacraments
+      - Sacramentos
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Game.PickAbility
+      TermType: 0
+      Description: 
+      Languages:
+      - Choose a skill and press <b>Action</b> to continue
+      - "Elige una habilidad y pulsa <b>Acci\xF3n</b> para continuar"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Level
+      TermType: 0
+      Description: 
+      Languages:
+      - Lv. {0}
+      - Nv. {0}
+      Flags: 0000
+      Languages_Touch: []
+    - Term: New
+      TermType: 0
+      Description: 
+      Languages:
+      - New!
+      - "\xA1Nueva!"
       Flags: 0000
       Languages_Touch: []
     - Term: Story.Intro
@@ -58,46 +214,61 @@ MonoBehaviour:
         a los infiernos."
       Flags: 0000
       Languages_Touch: []
-    - Term: Game.PickAbility
+    - Term: Title.StartGame
       TermType: 0
       Description: 
       Languages:
-      - Choose a skill and press <b>Action</b> to continue
-      - "Elige una habilidad y pulsa <b>Acci\xF3n</b> para continuar"
+      - Press <b>Action</b> to Save Humanity
+      - "Presiona <b>Acci\xF3n</b> para Salvar a la Humanidad"
       Flags: 0000
       Languages_Touch: []
-    - Term: Ability.Blessing.Title
+    - Term: Tutorial.DefeatDemons.Content
       TermType: 0
       Description: 
       Languages:
-      - "Blessing\t"
-      - Bendiciones
+      - You'll get experience to upgrade your abilities and learn new ones.
+      - "Obtendr\xE1s experiencia para mejorar tus habilidades y aprender nuevas."
       Flags: 0000
       Languages_Touch: []
-    - Term: Ability.Blessing.Description
+    - Term: Tutorial.DefeatDemons.Header
       TermType: 0
       Description: 
       Languages:
-      - Jesus Christ distributes blessings and deals area damage to enemies around
-        him.
-      - "Jesucristo reparte bendiciones y hace da\xF1o de \xE1rea a los enemigos
-        a su alrededor."
+      - Beat the demons
+      - Derrota a los demonios
       Flags: 0000
       Languages_Touch: []
-    - Term: New
+    - Term: Tutorial.UseYourPower.Header
       TermType: 0
       Description: 
       Languages:
-      - New!
-      - "\xA1Nueva!"
+      - Unleash your sacred power
+      - Desata tu poder divino
       Flags: 0000
       Languages_Touch: []
-    - Term: Level
+    - Term: Tutorial.DefeatTheLords.Header
       TermType: 0
       Description: 
       Languages:
-      - Lv. {0}
-      - Nv. {0}
+      - Defeat the Lords of Hell
+      - "Vence a los Se\xF1ores del Hades"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Tutorial.UseYourPower.Content
+      TermType: 0
+      Description: 
+      Languages:
+      - Every ability is different and  it runs itself. Combine them wisely.
+      - "Cada habilidad es diferente y se autoejecuta. Comb\xEDnalas sabiamente."
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Tutorial.DefeatTheLords.Content
+      TermType: 0
+      Description: 
+      Languages:
+      - Break the gates of hell, free the souls of the righteous and ascend to heaven.
+      - Quiebra las puertas del infierno, libera las almas de los justos y asciende
+        a los cielos.
       Flags: 0000
       Languages_Touch: []
     CaseInsensitiveTerms: 0
@@ -115,7 +286,7 @@ MonoBehaviour:
     Google_WebServiceURL: https://script.google.com/macros/s/AKfycby7Z1NeRJuviHmJ8k9pIw8KB0DfYgfDkoxOqMyCitRaRXHUZgdmROB2vHxHblgK0IQaEA/exec
     Google_SpreadsheetKey: 19_6I7U37VQj85MK_-VDOyrctyHmV2PQUvcU4Vh1WBrQ
     Google_SpreadsheetName: I2Loc cofrade-jam Localization
-    Google_LastUpdatedVersion: 
+    Google_LastUpdatedVersion: 1711560027881
     Google_Password: change_this
     GoogleUpdateFrequency: 3
     GoogleInEditorCheckFrequency: 2

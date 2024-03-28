@@ -1,23 +1,26 @@
+using Sirenix.OdinInspector;
 using UnityEngine.Assertions;
+using static UnityEngine.UI.GridLayoutGroup;
 
 namespace MiguelGameDev.Anastasis
 {
-
     public abstract class Ability
     {
-        protected int _maxLevel;
-        protected int _currentLevel;
+        protected CharacterAbilities _owner;
 
-        public int MaxLevel => _maxLevel;
+        [ShowInInspector] protected int _currentLevel;
+
         public int CurrentLevel => _currentLevel;
-        public bool CanUpgrade => _currentLevel < _maxLevel;
+        public abstract int MaxLevel { get; }
+        public bool CanUpgrade => _currentLevel < MaxLevel;
 
-        public Ability(AbilityConfig config)
+        public Ability(CharacterAbilities owner, AbilityConfig config)
         {
-            _maxLevel = config.MaxLevel;
+            _owner = owner;
             _currentLevel = 0;
         }
 
+        [Button]
         public void Upgrade()
         {
             Assert.IsTrue(CanUpgrade, "You are triying upgrade, but max level reached");
@@ -27,6 +30,6 @@ namespace MiguelGameDev.Anastasis
 
         protected abstract void ApplyUpgrade();
 
-        public abstract bool TryExecute();
+        public abstract bool Update();
     }
 }

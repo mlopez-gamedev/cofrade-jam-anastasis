@@ -5,7 +5,6 @@ namespace MiguelGameDev.Anastasis
     public class UnityLegacyCharacterInput : CharacterInput
     {
         private readonly MoveCharacterUseCase _moveUseCase;
-        
 
         public UnityLegacyCharacterInput(MoveCharacterUseCase moveUseCase)
         {

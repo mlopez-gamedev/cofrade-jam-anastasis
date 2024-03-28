@@ -2,7 +2,9 @@
 {
     public class SacramentsAbility : Ability
     {
-        public SacramentsAbility(SacramentsAbilityConfig config) : base(config)
+        public override int MaxLevel => throw new System.NotImplementedException();
+
+        public SacramentsAbility(CharacterAbilities owner, SacramentsAbilityConfig config) : base(owner, config)
         {
 
         }
@@ -12,7 +14,7 @@
 
         }
 
-        public override bool TryExecute()
+        public override bool Update()
         {
             return false;
         }
