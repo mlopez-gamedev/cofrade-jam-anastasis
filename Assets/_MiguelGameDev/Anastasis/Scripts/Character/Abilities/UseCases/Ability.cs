@@ -31,5 +31,9 @@ namespace MiguelGameDev.Anastasis
         protected abstract void ApplyUpgrade();
 
         public abstract bool Update();
+        internal virtual void Release()
+        {
+
+        }
     }
 }

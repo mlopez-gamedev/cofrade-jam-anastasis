@@ -17,4 +17,83 @@ MonoBehaviour:
   _titleTerm: Ability/Sacraments.Title
   _descriptionTerm: Ability/Sacraments.Description
   _icon: {fileID: 21300000, guid: 59c808227fd98c14683c6a946be9e77e, type: 3}
-  _maxLevel: 10
+  _sacramentAvatar: {fileID: 6438396745368617462, guid: 125c4e1c712aab84786a3cb1890d7ea2,
+    type: 3}
+  _levels:
+  - _amount: 0
+    _cooldown: 0
+    _range: 0
+    _duration: 0
+    _damage: 0
+    _stuntDuration: 0
+    _pushForce: 0
+  - _amount: 1
+    _cooldown: 1.5
+    _range: 4
+    _duration: 0.4
+    _damage: 5
+    _stuntDuration: 0
+    _pushForce: 0
+  - _amount: 1
+    _cooldown: 1.25
+    _range: 6
+    _duration: 0.45
+    _damage: 8
+    _stuntDuration: 0
+    _pushForce: 0
+  - _amount: 2
+    _cooldown: 1.25
+    _range: 5
+    _duration: 0.45
+    _damage: 6
+    _stuntDuration: 0
+    _pushForce: 0
+  - _amount: 2
+    _cooldown: 1
+    _range: 8
+    _duration: 0.5
+    _damage: 12
+    _stuntDuration: 0
+    _pushForce: 0
+  - _amount: 4
+    _cooldown: 1
+    _range: 8
+    _duration: 0.5
+    _damage: 15
+    _stuntDuration: 0
+    _pushForce: 0
+  - _amount: 4
+    _cooldown: 0.8
+    _range: 10
+    _duration: 0.5
+    _damage: 25
+    _stuntDuration: 0
+    _pushForce: 5
+  - _amount: 6
+    _cooldown: 0.8
+    _range: 10
+    _duration: 0.5
+    _damage: 25
+    _stuntDuration: 0
+    _pushForce: 5
+  - _amount: 6
+    _cooldown: 0.6
+    _range: 12
+    _duration: 0.5
+    _damage: 30
+    _stuntDuration: 0
+    _pushForce: 5
+  - _amount: 8
+    _cooldown: 0.6
+    _range: 15
+    _duration: 0.6
+    _damage: 40
+    _stuntDuration: 0
+    _pushForce: 5
+  - _amount: 8
+    _cooldown: 0.4
+    _range: 20
+    _duration: 0.75
+    _damage: 60
+    _stuntDuration: 0.1
+    _pushForce: 5

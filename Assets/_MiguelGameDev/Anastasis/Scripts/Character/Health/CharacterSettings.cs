@@ -8,10 +8,12 @@ namespace MiguelGameDev.Anastasis
         [SerializeField] private float _baseSpeed;
         [SerializeField] private int _baseMaxHealth;
         [SerializeField] private float _baseInvulnerabilityDuration;
+        [SerializeField] private float _baseDamageMultiplier = 1f;
 
         public float BaseSpeed => _baseSpeed;
         public int BaseMaxHealth => _baseMaxHealth;
         public float BaseInvulnerabilityDuration => _baseInvulnerabilityDuration;
+        public float BaseDamageMultiplier => _baseDamageMultiplier;
 
     }
 }

@@ -10,6 +10,7 @@ namespace MiguelGameDev.Anastasis
 
         private BlessingAvatar _avatar;
 
+        private FloatAttribute _damageMultiplier;
         private IntegerAttribute _damage;
         private FloatAttribute _size;
 
@@ -23,13 +24,20 @@ namespace MiguelGameDev.Anastasis
             _avatarPrefab = config.Avatar;
             _levels = config.Levels;
 
-            _damage = new IntegerAttribute(_levels[0].Damage);
+            _damageMultiplier = owner.PlayerAttributes.DamageMultiplier;
+            _damage = new IntegerAttribute(Mathf.CeilToInt(_levels[0].Damage * _damageMultiplier.Value));
             _size = new FloatAttribute(_levels[0].Size);
+            _damageMultiplier.Subscribe(OnDamageMultiplierChange);
+        }
+
+        private void OnDamageMultiplierChange(float diff)
+        {
+            _damage.Value = Mathf.CeilToInt(_levels[_currentLevel].Damage * _damageMultiplier.Value);
         }
 
         protected override void ApplyUpgrade()
         {
-            _damage.Value = _levels[_currentLevel].Damage;
+            _damage.Value = Mathf.CeilToInt(_levels[_currentLevel].Damage * _damageMultiplier.Value);
             _size.Value = _levels[_currentLevel].Size;
 
             if (_currentLevel == 1)
@@ -58,7 +66,12 @@ namespace MiguelGameDev.Anastasis
                 return;
             }
 
-            // damageReceiver.TakeDamage(new DamageInfo(_damage.Value, 0, Vector2.zero));
+            damageReceiver.TakeDamage(new DamageInfo(_owner.Transform, _owner.TeamId, _damage.Value));
+        }
+
+        internal override void Release()
+        {
+            _damageMultiplier.Unsubscribe(OnDamageMultiplierChange);
         }
     }
 }

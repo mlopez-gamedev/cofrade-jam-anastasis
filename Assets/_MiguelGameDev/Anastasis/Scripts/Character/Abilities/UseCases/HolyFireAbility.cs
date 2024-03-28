@@ -1,7 +1,6 @@
 ﻿using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Pool;
-using UnityEngine.UIElements;
 
 namespace MiguelGameDev.Anastasis
 {
@@ -14,6 +13,7 @@ namespace MiguelGameDev.Anastasis
         private readonly FloatAttribute _cooldown;
         private readonly FloatAttribute _maxDistance;
         private readonly IntegerAttribute _damage;
+        private readonly FloatAttribute _damageMultiplier;
         private readonly FloatAttribute _size;
         private readonly FloatAttribute _duration;
 
@@ -30,20 +30,28 @@ namespace MiguelGameDev.Anastasis
             _avatarPrefab = config.HolyFireAvatar;
             _levels = config.Levels;
 
+            _damageMultiplier = owner.PlayerAttributes.DamageMultiplier;
+
             _cooldown = new FloatAttribute(_levels[0].Cooldown);
             _maxDistance = new FloatAttribute(_levels[0].MaxDistance);
-            _damage = new IntegerAttribute(_levels[0].Damage);
+            _damage = new IntegerAttribute(Mathf.CeilToInt(_levels[0].Damage * _damageMultiplier.Value));
             _size = new FloatAttribute(_levels[0].Size);
             _duration = new FloatAttribute(_levels[0].Duration);
 
             _avatarPool = new ObjectPool<HolyFireAvatar>(CreateAvatar, TakeAvatarFromPool, ReturnAvatarToPool);
+            _damageMultiplier.Subscribe(OnDamageMultiplierChange);
+        }
+
+        private void OnDamageMultiplierChange(float diff)
+        {
+            _damage.Value = Mathf.CeilToInt(_levels[_currentLevel].Damage * _damageMultiplier.Value);
         }
 
         private HolyFireAvatar CreateAvatar()
         {
             var avatar = Object.Instantiate(_avatarPrefab);
             avatar.gameObject.SetActive(false);
-            avatar.Setup(this);
+            avatar.Setup(this, _avatarPool);
             return avatar;
         }
 
@@ -66,7 +74,7 @@ namespace MiguelGameDev.Anastasis
         {
             _cooldown.Value = _levels[_currentLevel].Cooldown;
             _maxDistance.Value = _levels[_currentLevel].MaxDistance;
-            _damage.Value = _levels[_currentLevel].Damage;
+            _damage.Value = Mathf.CeilToInt(_levels[0].Damage * _damageMultiplier.Value);
             _size.Value = _levels[_currentLevel].Size;
             _duration.Value = _levels[_currentLevel].Duration;
 
@@ -102,6 +110,11 @@ namespace MiguelGameDev.Anastasis
             }
 
             damageReceiver.TakeDamage(new DamageInfo(_owner.Transform, _owner.TeamId, _damage.Value));
+        }
+
+        internal override void Release()
+        {
+            _damageMultiplier.Unsubscribe(OnDamageMultiplierChange);
         }
     }
 }

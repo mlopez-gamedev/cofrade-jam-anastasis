@@ -7,6 +7,7 @@ namespace MiguelGameDev.Anastasis
         private CrownOfThornsLevel[] _levels;
         public override int MaxLevel => _levels.Length - 1;
 
+        private readonly FloatAttribute _characterDamageMultiplier;
         private readonly FloatAttribute _minDamageMultiplier;
         private readonly FloatAttribute _maxDamageMultiplier;
         private readonly FloatAttribute _stuntDuration;
@@ -16,16 +17,29 @@ namespace MiguelGameDev.Anastasis
         {
             _levels = config.Levels;
 
-            _minDamageMultiplier = new FloatAttribute(_levels[0].MinDamageMultiplier);
-            _maxDamageMultiplier = new FloatAttribute(_levels[0].MaxDamageMultiplier);
+            _characterDamageMultiplier = owner.PlayerAttributes.DamageMultiplier;
+
+            _minDamageMultiplier = new FloatAttribute(_levels[0].MinDamageMultiplier * _characterDamageMultiplier.Value);
+            _maxDamageMultiplier = new FloatAttribute(_levels[0].MaxDamageMultiplier * _characterDamageMultiplier.Value);
             _pushForce = new FloatAttribute(_levels[0].PushForce);
             _stuntDuration = new FloatAttribute(_levels[0].StuntDuration);
+            _characterDamageMultiplier.Subscribe(OnCharacterDamageMultiplierChange);
+        }
+
+        private void OnCharacterDamageMultiplierChange(float diff)
+        {
+            SetDamage();
+        }
+
+        private void SetDamage()
+        {
+            _minDamageMultiplier.Value = _levels[_currentLevel].MinDamageMultiplier * _characterDamageMultiplier.Value;
+            _maxDamageMultiplier.Value = _levels[_currentLevel].MaxDamageMultiplier * _characterDamageMultiplier.Value;
         }
 
         protected override void ApplyUpgrade()
         {
-            _minDamageMultiplier.Value = _levels[_currentLevel].MinDamageMultiplier;
-            _maxDamageMultiplier.Value = _levels[_currentLevel].MaxDamageMultiplier;
+            SetDamage();
             _pushForce.Value = _levels[_currentLevel].PushForce;
             _stuntDuration.Value = _levels[_currentLevel].StuntDuration;
 
@@ -69,6 +83,11 @@ namespace MiguelGameDev.Anastasis
 
             var pushDirection = (instigator.position - _owner.Transform.position).normalized;
             return pushDirection * _pushForce.Value;
+        }
+
+        internal override void Release()
+        {
+            _characterDamageMultiplier.Unsubscribe(OnCharacterDamageMultiplierChange);
         }
     }
 }

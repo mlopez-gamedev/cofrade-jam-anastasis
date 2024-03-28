@@ -35,14 +35,16 @@ namespace MiguelGameDev.Anastasis
                     new FloatAttribute(_playerSettings.BaseSpeed),
                     new IntegerAttribute(_playerSettings.BaseMaxHealth),
                     new IntegerAttribute(_playerSettings.BaseMaxHealth),
+                    new FloatAttribute(_playerSettings.BaseDamageMultiplier),
                     new FloatAttribute(_playerSettings.BaseInvulnerabilityDuration));
 
             var abilityFactory = new AbilityFactory();
 
-            _player.Setup(JESUS_TEAM_ID, playerAttributes, abilityFactory);
-
-            var pickAbilityUseCase = new PlayerPickAbilityUseCase(_pickAbilityScreen, _player.Abilities, _abilityCatalog);
+            var pickAbilityUseCase = new PlayerPickAbilityUseCase(_pickAbilityScreen, _abilityCatalog);
             var playerLevelUpUseCase = new PlayerLevelUpUseCase(pickAbilityUseCase);
+
+            _player.Setup(JESUS_TEAM_ID, playerAttributes, abilityFactory, playerLevelUpUseCase);
+
             var initGameUseCase = new InitGameUseCase(_titleScreen, _storyScreen, _tutorialScreen, _cameraPositioner, _followerCamera, _player, pickAbilityUseCase);
 
             _cameraPositioner.Setup(_titlePosition, _gamePosition);

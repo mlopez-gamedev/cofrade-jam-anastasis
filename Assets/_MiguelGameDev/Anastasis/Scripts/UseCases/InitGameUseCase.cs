@@ -35,7 +35,7 @@ namespace MiguelGameDev.Anastasis
             _player.WakeUp();
             await UniTask.Delay(1000);
             await _tutorialScreen.ShowTutorial();
-            await _pickAbilityUseCase.PickInitialAbility();
+            await _pickAbilityUseCase.PickInitialAbility(_player.Abilities);
             StartGame();
         }
 

@@ -1,19 +1,23 @@
 ﻿using MEC;
 using UnityEngine;
+using UnityEngine.Pool;
 
 namespace MiguelGameDev.Anastasis
 {
+
     public class HolyFireAvatar : MonoBehaviour
     {
         [SerializeField] AudioSource _audioSource;
         [SerializeField] float _avatarSizeMultiplier = 0.5f;
 
         private HolyFireAbility _ability;
+        private ObjectPool<HolyFireAvatar> _objectPool;
         private bool _enable = false;
 
-        public void Setup(HolyFireAbility ability)
+        internal void Setup(HolyFireAbility ability, ObjectPool<HolyFireAvatar> objectPool)
         {
             _ability = ability;
+            _objectPool = objectPool;
         }
 
         internal void Init(Vector3 position)
@@ -29,7 +33,13 @@ namespace MiguelGameDev.Anastasis
             _enable = true;
             _audioSource.pitch = Random.Range(0.85f, 1.1f);
             _audioSource.Play();
-            Destroy(gameObject, _ability.Duration.Value);
+
+            Timing.CallDelayed(_ability.Duration.Value, Kill, gameObject);
+        }
+
+        private void Kill()
+        {
+            _objectPool.Release(this);
         }
 
         private void ChangeAvatarSize()
@@ -50,7 +60,7 @@ namespace MiguelGameDev.Anastasis
         internal void Finish()
         {
             _enable = false;
-            gameObject.SetActive(true);
+            gameObject.SetActive(false);
         }
     }
 }

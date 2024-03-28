@@ -30,6 +30,7 @@ namespace MiguelGameDev.Anastasis
         private readonly IntegerAttribute _unitsAmount;
         private readonly List<HolySpiritUnitData> _unitsData;
         private readonly IntegerAttribute _damage;
+        private readonly FloatAttribute _damageMultiplier;
 
         private HolySpiritAvatar _avatar;
 
@@ -42,17 +43,25 @@ namespace MiguelGameDev.Anastasis
         {
             _avatarPrefab = config.HolySpiritAvatar;
             _levels = config.Levels;
+
+            _damageMultiplier = owner.PlayerAttributes.DamageMultiplier;
             _minDistanceMultiplier = config.MinDistanceMultiplier;
 
             _unitsAmount = new IntegerAttribute(_levels[0].Units.Length);
             _unitsData = new List<HolySpiritUnitData>();
 
-            _damage = new IntegerAttribute(_levels[0].Damage);
+            _damage = new IntegerAttribute(Mathf.CeilToInt(_levels[0].Damage * _damageMultiplier.Value));
+            _damageMultiplier.Subscribe(OnDamageMultiplierChange);
+        }
+
+        private void OnDamageMultiplierChange(float diff)
+        {
+            _damage.Value = Mathf.CeilToInt(_levels[_currentLevel].Damage * _damageMultiplier.Value);
         }
 
         protected override void ApplyUpgrade()
         {
-            _damage.Value = _levels[_currentLevel].Damage;
+            _damage.Value = Mathf.CeilToInt(_levels[_currentLevel].Damage * _damageMultiplier.Value);
 
             for (int i = 0; i < _levels[_currentLevel].Units.Length; ++i)
             {
@@ -102,6 +111,11 @@ namespace MiguelGameDev.Anastasis
             }
 
             damageReceiver.TakeDamage(new DamageInfo(_owner.Transform, _owner.TeamId, _damage.Value));
+        }
+
+        internal override void Release()
+        {
+            _damageMultiplier.Unsubscribe(OnDamageMultiplierChange);
         }
     }
 }

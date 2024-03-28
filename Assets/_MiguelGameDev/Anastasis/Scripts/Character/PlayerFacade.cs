@@ -18,13 +18,13 @@ public class PlayerFacade : MonoBehaviour
 
     public CharacterAbilities Abilities => _abilities;
 
-    public void Setup(int teamId, PlayerAttributes playerAttributes, AbilityFactory abilityFactory)
+    public void Setup(int teamId, PlayerAttributes playerAttributes, AbilityFactory abilityFactory, PlayerLevelUpUseCase playerLevelUpUseCase)
     {
         var activateCrownOfThornsUseCase = new ActivateCrownOfThornsUseCase(_crownOfThrons);
 
         _motor = new CharacterMotor(_characterController, playerAttributes.Speed);
         _health = new CharacterHealth(playerAttributes.MaxHealth, playerAttributes.CurrentHealth);
-        _abilities = new CharacterAbilities(transform, teamId, abilityFactory, activateCrownOfThornsUseCase);
+        _abilities = new CharacterAbilities(transform, teamId, playerAttributes, abilityFactory, activateCrownOfThornsUseCase);
 
         var moveUseCase = new MoveCharacterUseCase(_motor, _animation);
         
@@ -61,6 +61,14 @@ public class PlayerFacade : MonoBehaviour
 
     public void Resume()
     {
+
+    }
+
+    private void OnDestroy()
+    {
+        _abilities?.Release();
+        _input?.SetEnable(false);
+        _motor?.Stop();
 
     }
 }

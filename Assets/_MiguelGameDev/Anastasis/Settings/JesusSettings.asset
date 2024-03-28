@@ -13,3 +13,6 @@ MonoBehaviour:
   m_Name: JesusSettings
   m_EditorClassIdentifier: 
   _baseSpeed: 10
+  _baseMaxHealth: 30
+  _baseInvulnerabilityDuration: 0.5
+  _baseDamageMultiplier: 1

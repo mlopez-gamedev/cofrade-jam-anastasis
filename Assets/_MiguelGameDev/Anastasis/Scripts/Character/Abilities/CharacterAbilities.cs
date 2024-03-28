@@ -10,19 +10,22 @@ namespace MiguelGameDev.Anastasis
     {
         private readonly Transform _transform;
         private readonly int _teamId;
-        private readonly AbilityFactory _factory;
+        private readonly PlayerAttributes _playerAttributes;
         private readonly ActivateCrownOfThornsUseCase _activateCrownOfThornsUseCase;
+        private readonly AbilityFactory _factory;
 
         [ShowInInspector] private Dictionary<int, Ability> _abilities;
 
         public Transform Transform => _transform;
         public int TeamId => _teamId;
+        public PlayerAttributes PlayerAttributes => _playerAttributes;
         public ActivateCrownOfThornsUseCase ActivateCrownOfThornsUseCase => _activateCrownOfThornsUseCase;
 
-        public CharacterAbilities(Transform transform, int teamId, AbilityFactory factory, ActivateCrownOfThornsUseCase activateCrownOfThornsUseCase)
+        public CharacterAbilities(Transform transform, int teamId, PlayerAttributes playerAttributes, AbilityFactory factory, ActivateCrownOfThornsUseCase activateCrownOfThornsUseCase)
         {
             _transform = transform;
             _teamId = teamId;
+            _playerAttributes = playerAttributes;
             _factory = factory;
             _activateCrownOfThornsUseCase = activateCrownOfThornsUseCase;
             _abilities = new Dictionary<int, Ability>();
@@ -92,6 +95,14 @@ namespace MiguelGameDev.Anastasis
                 }
 
                 ability.Update();
+            }
+        }
+
+        internal void Release()
+        {
+            foreach (Ability ability in _abilities.Values)
+            {
+                ability.Release();
             }
         }
     }
