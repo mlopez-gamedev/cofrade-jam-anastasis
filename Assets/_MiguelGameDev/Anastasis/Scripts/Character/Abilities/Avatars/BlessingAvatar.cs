@@ -3,7 +3,6 @@ using UnityEngine;
 
 namespace MiguelGameDev.Anastasis
 {
-
     public class BlessingAvatar : MonoBehaviour
     {
         [SerializeField] float _avatarSizeMultiplier = 0.5f;
@@ -30,7 +29,7 @@ namespace MiguelGameDev.Anastasis
             transform.localScale = new Vector3(avatarSize, avatarSize, avatarSize);
         }
 
-        private void Update()
+        public void Tick()
         {
             transform.rotation = Quaternion.identity;
         }

@@ -41,6 +41,7 @@ namespace MiguelGameDev.Anastasis
 
         public override bool Update()
         {
+            _avatar.Tick();
             return false;
         }
 
@@ -48,6 +49,11 @@ namespace MiguelGameDev.Anastasis
         {
             CharacterDamageReceiver damageReceiver = other.GetComponent<CharacterDamageReceiver>();
             if (damageReceiver == null)
+            {
+                return;
+            }
+
+            if (damageReceiver.TeamId == _owner.TeamId)
             {
                 return;
             }

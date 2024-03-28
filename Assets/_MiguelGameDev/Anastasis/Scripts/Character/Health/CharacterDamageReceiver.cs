@@ -5,13 +5,17 @@ namespace MiguelGameDev.Anastasis
 {
     public class CharacterDamageReceiver : MonoBehaviour
     {
+        [ShowInInspector, HideInEditorMode] int _teamId;
         [ShowInInspector, HideInEditorMode] private FloatAttribute _invulnerabilityDuration;
         private TakeDamageUseCase _takeDamageUseCase;
 
         private float _invulnerabilityEndTime;
 
-        public void Setup(FloatAttribute invulnerabilityDuration, TakeDamageUseCase takeDamageUseCase)
+        public int TeamId => _teamId;
+
+        public void Setup(int teamId, FloatAttribute invulnerabilityDuration, TakeDamageUseCase takeDamageUseCase)
         {
+            _teamId = teamId;
             _invulnerabilityDuration = invulnerabilityDuration;
             _takeDamageUseCase = takeDamageUseCase;
         }

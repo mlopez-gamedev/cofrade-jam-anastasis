@@ -6,6 +6,9 @@ namespace MiguelGameDev.Anastasis
 {
     public class GameInstaller : MonoBehaviour
     {
+        private const int JESUS_TEAM_ID = 0;
+        private const int DEMONS_TEAM_ID = 1;
+
         [SerializeField, BoxGroup("UI")] private TitleScreen _titleScreen;
         [SerializeField, BoxGroup("UI")] private StoryScreen _storyScreen;
         [SerializeField, BoxGroup("UI")] private TutorialScreen _tutorialScreen;
@@ -36,7 +39,7 @@ namespace MiguelGameDev.Anastasis
 
             var abilityFactory = new AbilityFactory();
 
-            _player.Setup(playerAttributes, abilityFactory);
+            _player.Setup(JESUS_TEAM_ID, playerAttributes, abilityFactory);
 
             var pickAbilityUseCase = new PlayerPickAbilityUseCase(_pickAbilityScreen, _player.Abilities, _abilityCatalog);
             var playerLevelUpUseCase = new PlayerLevelUpUseCase(pickAbilityUseCase);

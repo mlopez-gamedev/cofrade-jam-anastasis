@@ -6,7 +6,7 @@ namespace MiguelGameDev.Anastasis
 {
     public abstract class Ability
     {
-        protected CharacterAbilities _owner;
+        protected readonly CharacterAbilities _owner;
 
         [ShowInInspector] protected int _currentLevel;
 

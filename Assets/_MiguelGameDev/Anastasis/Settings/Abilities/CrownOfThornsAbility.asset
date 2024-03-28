@@ -18,25 +18,47 @@ MonoBehaviour:
   _descriptionTerm: Ability/CrownOfThorns.Description
   _icon: {fileID: 21300000, guid: 6cb563584339f7d4e91478df16823800, type: 3}
   _levels:
-  - _minDamageMultiplier: 25
+  - _stuntDuration: 0
+    _pushForce: 0
+    _minDamageMultiplier: 25
     _maxDamageMultiplier: 50
-  - _minDamageMultiplier: 35
+  - _stuntDuration: 0
+    _pushForce: 0
+    _minDamageMultiplier: 35
     _maxDamageMultiplier: 60
-  - _minDamageMultiplier: 45
+  - _stuntDuration: 0
+    _pushForce: 0
+    _minDamageMultiplier: 45
     _maxDamageMultiplier: 70
-  - _minDamageMultiplier: 55
+  - _stuntDuration: 0.1
+    _pushForce: 0
+    _minDamageMultiplier: 55
     _maxDamageMultiplier: 85
-  - _minDamageMultiplier: 65
+  - _stuntDuration: 0.1
+    _pushForce: 0
+    _minDamageMultiplier: 65
     _maxDamageMultiplier: 100
-  - _minDamageMultiplier: 75
+  - _stuntDuration: 0.1
+    _pushForce: 0
+    _minDamageMultiplier: 75
     _maxDamageMultiplier: 120
-  - _minDamageMultiplier: 90
+  - _stuntDuration: 0.25
+    _pushForce: 0
+    _minDamageMultiplier: 90
     _maxDamageMultiplier: 135
-  - _minDamageMultiplier: 100
+  - _stuntDuration: 0.25
+    _pushForce: 0
+    _minDamageMultiplier: 100
     _maxDamageMultiplier: 150
-  - _minDamageMultiplier: 125
+  - _stuntDuration: 0.5
+    _pushForce: 0
+    _minDamageMultiplier: 125
     _maxDamageMultiplier: 175
-  - _minDamageMultiplier: 150
+  - _stuntDuration: 0.5
+    _pushForce: 0
+    _minDamageMultiplier: 150
     _maxDamageMultiplier: 200
-  - _minDamageMultiplier: 200
+  - _stuntDuration: 1
+    _pushForce: 10
+    _minDamageMultiplier: 200
     _maxDamageMultiplier: 300

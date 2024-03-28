@@ -17,4 +17,95 @@ MonoBehaviour:
   _titleTerm: Ability/HolySpirit.Title
   _descriptionTerm: Ability/HolySpirit.Description
   _icon: {fileID: 21300000, guid: 3f83e9627c501cc46917fccf3b66fe66, type: 3}
-  _maxLevel: 10
+  _holySpiritAvatar: {fileID: 2815689497868937927, guid: 866200754962c89439a227704adb3691,
+    type: 3}
+  _minDistanceMultiplier: 0.5
+  _levels:
+  - _units: []
+    _damage: 0
+  - _units:
+    - _rotateAngularSpeed: 2
+      _cycleDuration: 3
+      _maxDistance: 2
+    _damage: 3
+  - _units:
+    - _rotateAngularSpeed: 2
+      _cycleDuration: 2.7
+      _maxDistance: 2
+    _damage: 6
+  - _units:
+    - _rotateAngularSpeed: 3
+      _cycleDuration: 2.4
+      _maxDistance: 2
+    _damage: 10
+  - _units:
+    - _rotateAngularSpeed: 3
+      _cycleDuration: 2.4
+      _maxDistance: 3
+    - _rotateAngularSpeed: 3
+      _cycleDuration: 2.4
+      _maxDistance: 3
+    _damage: 10
+  - _units:
+    - _rotateAngularSpeed: 3
+      _cycleDuration: 2.4
+      _maxDistance: 3
+    - _rotateAngularSpeed: 3
+      _cycleDuration: 2.4
+      _maxDistance: 3
+    _damage: 13
+  - _units:
+    - _rotateAngularSpeed: 5
+      _cycleDuration: 2.1
+      _maxDistance: 3
+    - _rotateAngularSpeed: 5
+      _cycleDuration: 2.1
+      _maxDistance: 3
+    _damage: 15
+  - _units:
+    - _rotateAngularSpeed: 5
+      _cycleDuration: 2.1
+      _maxDistance: 4
+    - _rotateAngularSpeed: 5
+      _cycleDuration: 2.1
+      _maxDistance: 4
+    - _rotateAngularSpeed: 5
+      _cycleDuration: 2.1
+      _maxDistance: 4
+    _damage: 15
+  - _units:
+    - _rotateAngularSpeed: 5
+      _cycleDuration: 1.8
+      _maxDistance: 4
+    - _rotateAngularSpeed: 5
+      _cycleDuration: 1.8
+      _maxDistance: 4
+    - _rotateAngularSpeed: 5
+      _cycleDuration: 1.8
+      _maxDistance: 4
+    _damage: 18
+  - _units:
+    - _rotateAngularSpeed: 7
+      _cycleDuration: 1.5
+      _maxDistance: 5
+    - _rotateAngularSpeed: 7
+      _cycleDuration: 1.5
+      _maxDistance: 5
+    - _rotateAngularSpeed: 7
+      _cycleDuration: 1.5
+      _maxDistance: 5
+    _damage: 20
+  - _units:
+    - _rotateAngularSpeed: 10
+      _cycleDuration: 1
+      _maxDistance: 5
+    - _rotateAngularSpeed: 10
+      _cycleDuration: 1
+      _maxDistance: 5
+    - _rotateAngularSpeed: 3
+      _cycleDuration: 1.5
+      _maxDistance: 10
+    - _rotateAngularSpeed: 3
+      _cycleDuration: 1.5
+      _maxDistance: 10
+    _damage: 30

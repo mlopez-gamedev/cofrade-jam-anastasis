@@ -3,13 +3,14 @@ using UnityEngine;
 
 namespace MiguelGameDev.Anastasis
 {
-    [Serializable]
-    public struct BlessingLevel
-    {
-        [SerializeField] int _damage;
-        [SerializeField] float _size;
 
+    [Serializable]
+    public struct HolySpiritLevel
+    {
+        [SerializeField] HolySpiritLevelUnit[] _units;
+        
+        [SerializeField] int _damage;
+        public HolySpiritLevelUnit[] Units => _units;
         public int Damage => _damage;
-        public float Size => _size;
     }
 }

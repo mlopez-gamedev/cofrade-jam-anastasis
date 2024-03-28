@@ -7,10 +7,10 @@ namespace MiguelGameDev.Anastasis
         private CrownOfThornsLevel[] _levels;
         public override int MaxLevel => _levels.Length - 1;
 
-        private FloatAttribute _minDamageMultiplier;
-        private FloatAttribute _maxDamageMultiplier;
-        private FloatAttribute _pushForce;
-        private FloatAttribute _stuntDuration;
+        private readonly FloatAttribute _minDamageMultiplier;
+        private readonly FloatAttribute _maxDamageMultiplier;
+        private readonly FloatAttribute _stuntDuration;
+        private readonly FloatAttribute _pushForce;
 
         public CrownOfThornsAbility(CharacterAbilities owner, CrownOfThornsAbilityConfig config) : base(owner, config)
         {
@@ -18,12 +18,16 @@ namespace MiguelGameDev.Anastasis
 
             _minDamageMultiplier = new FloatAttribute(_levels[0].MinDamageMultiplier);
             _maxDamageMultiplier = new FloatAttribute(_levels[0].MaxDamageMultiplier);
+            _pushForce = new FloatAttribute(_levels[0].PushForce);
+            _stuntDuration = new FloatAttribute(_levels[0].StuntDuration);
         }
 
         protected override void ApplyUpgrade()
         {
             _minDamageMultiplier.Value = _levels[_currentLevel].MinDamageMultiplier;
             _maxDamageMultiplier.Value = _levels[_currentLevel].MaxDamageMultiplier;
+            _pushForce.Value = _levels[_currentLevel].PushForce;
+            _stuntDuration.Value = _levels[_currentLevel].StuntDuration;
 
             if (_currentLevel == 1)
             {
@@ -38,6 +42,11 @@ namespace MiguelGameDev.Anastasis
 
         internal void ReturnDamage(DamageInfo damageInfo)
         {
+            if (damageInfo.TeamId == _owner.TeamId)
+            {
+                return;
+            }
+
             var characterDamageReceiver = damageInfo.Instigator.GetComponent<CharacterDamageReceiver>();
             if (characterDamageReceiver == null)
             {
@@ -48,7 +57,7 @@ namespace MiguelGameDev.Anastasis
             var damage = Mathf.CeilToInt(damageInfo.Damage * damageMultiplier);
             var pushForce = CalcPushForce(damageInfo.Instigator);
 
-            characterDamageReceiver.TakeDamage(new DamageInfo(_owner.Transform, damage, _stuntDuration.Value, pushForce));
+            characterDamageReceiver.TakeDamage(new DamageInfo(_owner.Transform, _owner.TeamId, damage, _stuntDuration.Value, pushForce));
         }
 
         private Vector2 CalcPushForce(Transform instigator)

@@ -1,5 +1,4 @@
 using Sirenix.OdinInspector;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
@@ -10,25 +9,31 @@ namespace MiguelGameDev.Anastasis
     public class CharacterAbilities
     {
         private readonly Transform _transform;
+        private readonly int _teamId;
         private readonly AbilityFactory _factory;
         private readonly ActivateCrownOfThornsUseCase _activateCrownOfThornsUseCase;
 
         [ShowInInspector] private Dictionary<int, Ability> _abilities;
 
         public Transform Transform => _transform;
+        public int TeamId => _teamId;
         public ActivateCrownOfThornsUseCase ActivateCrownOfThornsUseCase => _activateCrownOfThornsUseCase;
 
-        public CharacterAbilities(Transform transform, AbilityFactory factory, ActivateCrownOfThornsUseCase activateCrownOfThornsUseCase)
+        public CharacterAbilities(Transform transform, int teamId, AbilityFactory factory, ActivateCrownOfThornsUseCase activateCrownOfThornsUseCase)
         {
             _transform = transform;
+            _teamId = teamId;
             _factory = factory;
             _activateCrownOfThornsUseCase = activateCrownOfThornsUseCase;
             _abilities = new Dictionary<int, Ability>();
         }
 
-        public CharacterAbilities(AbilityFactory factory, AbilityConfig[] defaultAbilities)
+        public CharacterAbilities(Transform transform, int teamId, AbilityFactory factory, AbilityConfig[] defaultAbilities, ActivateCrownOfThornsUseCase activateCrownOfThornsUseCase)
         {
+            _transform = transform;
+            _teamId = teamId;
             _factory = factory;
+            _activateCrownOfThornsUseCase = activateCrownOfThornsUseCase;
             _abilities = new Dictionary<int, Ability>(defaultAbilities.Length);
             foreach (var ability in defaultAbilities)
             {

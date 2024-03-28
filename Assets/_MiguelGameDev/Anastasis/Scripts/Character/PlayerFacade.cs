@@ -18,13 +18,13 @@ public class PlayerFacade : MonoBehaviour
 
     public CharacterAbilities Abilities => _abilities;
 
-    public void Setup(PlayerAttributes playerAttributes, AbilityFactory abilityFactory)
+    public void Setup(int teamId, PlayerAttributes playerAttributes, AbilityFactory abilityFactory)
     {
         var activateCrownOfThornsUseCase = new ActivateCrownOfThornsUseCase(_crownOfThrons);
 
         _motor = new CharacterMotor(_characterController, playerAttributes.Speed);
         _health = new CharacterHealth(playerAttributes.MaxHealth, playerAttributes.CurrentHealth);
-        _abilities = new CharacterAbilities(transform, abilityFactory, activateCrownOfThornsUseCase);
+        _abilities = new CharacterAbilities(transform, teamId, abilityFactory, activateCrownOfThornsUseCase);
 
         var moveUseCase = new MoveCharacterUseCase(_motor, _animation);
         
@@ -33,7 +33,7 @@ public class PlayerFacade : MonoBehaviour
         var dieUseCase = new PlayerDieUseCase(_motor, _animation, _audio);
         var takeDamageUseCase = new TakeDamageUseCase(_health, _motor, _input, _animation, _audio, dieUseCase, _crownOfThrons);
 
-        _damageReceiver.Setup(playerAttributes.InvulnerabilityDuration, takeDamageUseCase);
+        _damageReceiver.Setup(teamId, playerAttributes.InvulnerabilityDuration, takeDamageUseCase);
     }
 
     public void WakeUp()
