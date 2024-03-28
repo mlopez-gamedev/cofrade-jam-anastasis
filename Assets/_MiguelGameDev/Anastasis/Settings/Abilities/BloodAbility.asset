@@ -17,4 +17,27 @@ MonoBehaviour:
   _titleTerm: Ability/Blood.Title
   _descriptionTerm: Ability/Blood.Description
   _icon: {fileID: 21300000, guid: 2388ce66ef2757841bf02f60ccd72e07, type: 3}
-  _maxLevel: 10
+  _bloodAvatar: {fileID: 1591680586779899416, guid: 8a954478a3406b74d8d4e57ac816155f,
+    type: 3}
+  _levels:
+  - _maxHealth: 30
+  - _maxHealth: 35
+  - _maxHealth: 40
+  - _maxHealth: 50
+  - _maxHealth: 65
+  - _maxHealth: 80
+  - _maxHealth: 100
+  - _maxHealth: 120
+  - _maxHealth: 150
+  - _maxHealth: 180
+  - _maxHealth: 250
+  - _maxHealth: 350
+  - _maxHealth: 450
+  - _maxHealth: 600
+  - _maxHealth: 800
+  - _maxHealth: 1000
+  - _maxHealth: 1250
+  - _maxHealth: 1500
+  - _maxHealth: 2000
+  - _maxHealth: 2500
+  - _maxHealth: 5000

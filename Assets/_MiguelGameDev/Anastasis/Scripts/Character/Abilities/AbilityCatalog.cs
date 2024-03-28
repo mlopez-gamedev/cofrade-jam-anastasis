@@ -30,7 +30,7 @@ namespace MiguelGameDev.Anastasis
             var availableAbilities = new List<AbilityConfig>();
             foreach (AbilityConfig ability in _abilities)
             {
-                if (ability.Type == EAbilityType.Attack)
+                if (ability.Type == EAbilityType.Buff)
                 {
                     availableAbilities.Add(ability);
                     continue;

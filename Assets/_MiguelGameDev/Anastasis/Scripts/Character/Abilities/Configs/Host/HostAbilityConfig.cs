@@ -5,6 +5,10 @@ namespace MiguelGameDev.Anastasis
     [CreateAssetMenu(menuName = "MiguelGameDev/Anastasis/Host", fileName = "HostAbility")]
     public class HostAbilityConfig : AbilityConfig
     {
-        // ostia, aumenta el poder
+        [SerializeField] private ParticleSystem _hostAvatar;
+        [SerializeField] private HostLevel[] _levels;
+
+        public ParticleSystem HostAvatar => _hostAvatar;
+        public HostLevel[] Levels => _levels;
     }
 }
