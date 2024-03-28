@@ -2,6 +2,7 @@ using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using I2.Loc;
 using MiguelGameDev.Generic.Extensions;
+using System;
 using TMPro;
 using UnityEngine;
 
@@ -15,6 +16,7 @@ namespace MiguelGameDev.Anastasis
         [SerializeField] TextVisibilityAnimation _storyVisibilityAnimation;
         [SerializeField] TMP_Text _nextText;
 
+        private AudioService _audio;
         private bool _checkInput;
 
         private void Awake()
@@ -22,6 +24,11 @@ namespace MiguelGameDev.Anastasis
             _canvasGroup.gameObject.SetActive(false);
             _nextText.gameObject.SetActive(false);
             _storyTextLocalize.SetTerm(null);
+        }
+
+        internal void Setup(AudioService audio)
+        {
+            _audio = audio;
         }
 
         public async UniTask ShowStory(string storyKey)
@@ -83,6 +90,7 @@ namespace MiguelGameDev.Anastasis
 
             if (Input.GetButtonDown("Action"))
             {
+                _audio.PlayClickSfx();
                 if (!_storyVisibilityAnimation.IsComplete)
                 {
                     _storyVisibilityAnimation.Complete();

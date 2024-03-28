@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace MiguelGameDev.Anastasis
 {
+
     [CreateAssetMenu(menuName = "MiguelGameDev/Anastasis/Ability Catalog", fileName = "AbilityCatalog")]
     public class AbilityCatalog : ScriptableObject
     {

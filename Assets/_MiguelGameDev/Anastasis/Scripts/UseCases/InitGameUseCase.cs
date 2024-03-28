@@ -13,10 +13,11 @@ namespace MiguelGameDev.Anastasis
         private readonly CameraPositioner _camera;
         private readonly FollowerCamera _followerCamera;
         private readonly PlayerFacade _player;
+        private readonly AudioService _audio;
         private readonly PlayerPickAbilityUseCase _pickAbilityUseCase;
 
         public InitGameUseCase(TitleScreen titleScreen, StoryScreen storyScreen, TutorialScreen tutorialScreen, 
-                CameraPositioner camera, FollowerCamera followerCamera, PlayerFacade player, PlayerPickAbilityUseCase pickAbilityUseCase)
+                CameraPositioner camera, FollowerCamera followerCamera, PlayerFacade player, AudioService audio, PlayerPickAbilityUseCase pickAbilityUseCase)
         {
             _titleScreen = titleScreen;
             _storyScreen = storyScreen;
@@ -24,6 +25,7 @@ namespace MiguelGameDev.Anastasis
             _camera = camera;
             _followerCamera = followerCamera;
             _player = player;
+            _audio = audio;
             _pickAbilityUseCase = pickAbilityUseCase;
         }
 
@@ -33,9 +35,11 @@ namespace MiguelGameDev.Anastasis
             await _storyScreen.ShowStory("Story.Intro");
             await ZoomOutCamera();
             _player.WakeUp();
-            await UniTask.Delay(1000);
+            _audio.PlayAmbient();
+            await _audio.StopMusic(1f);
             await _tutorialScreen.ShowTutorial();
             await _pickAbilityUseCase.PickInitialAbility(_player.Abilities);
+            _audio.PlayMusic(_audio.GameMusicClip);
             StartGame();
         }
 

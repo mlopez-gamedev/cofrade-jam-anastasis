@@ -3,6 +3,7 @@ using DG.Tweening;
 using I2.Loc;
 using MiguelGameDev.Generic.Extensions;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace MiguelGameDev.Anastasis
@@ -44,7 +45,7 @@ namespace MiguelGameDev.Anastasis
                 _abilityPanels[i].gameObject.SetActive(false);
             }
 
-            _availableAbilityPanels[0].Select();
+            Select(0);
 
             await Show();
 

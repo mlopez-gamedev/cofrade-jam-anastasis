@@ -9,6 +9,7 @@ namespace MiguelGameDev.Anastasis
         private const int JESUS_TEAM_ID = 0;
         private const int DEMONS_TEAM_ID = 1;
 
+        [SerializeField, BoxGroup("Audio")] private AudioService _audio;
         [SerializeField, BoxGroup("UI")] private TitleScreen _titleScreen;
         [SerializeField, BoxGroup("UI")] private StoryScreen _storyScreen;
         [SerializeField, BoxGroup("UI")] private TutorialScreen _tutorialScreen;
@@ -45,12 +46,14 @@ namespace MiguelGameDev.Anastasis
 
             _player.Setup(JESUS_TEAM_ID, playerAttributes, abilityFactory, playerLevelUpUseCase);
 
-            var initGameUseCase = new InitGameUseCase(_titleScreen, _storyScreen, _tutorialScreen, _cameraPositioner, _followerCamera, _player, pickAbilityUseCase);
+            var initGameUseCase = new InitGameUseCase(_titleScreen, _storyScreen, _tutorialScreen, _cameraPositioner, _followerCamera, _player, _audio, pickAbilityUseCase);
 
             _cameraPositioner.Setup(_titlePosition, _gamePosition);
             _followerCamera.Setup(_followerCameraSettings);
 
-            _titleScreen.Setup(initGameUseCase);
+            _titleScreen.Setup(_audio, initGameUseCase);
+            _storyScreen.Setup(_audio);
+            _tutorialScreen.Setup(_audio);
 
             Init();
             return UniTask.CompletedTask;

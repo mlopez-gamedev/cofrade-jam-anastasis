@@ -1,6 +1,7 @@
 ﻿using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using MiguelGameDev.Generic.Extensions;
+using System;
 using TMPro;
 using UnityEngine;
 
@@ -11,12 +12,18 @@ namespace MiguelGameDev.Anastasis
         [SerializeField] CanvasGroup _canvasGroup;
         [SerializeField] TMP_Text _nextText;
 
+        private AudioService _audio;
         private bool _checkInput;
 
         private void Awake()
         {
             _canvasGroup.gameObject.SetActive(false);
             _nextText.gameObject.SetActive(false);
+        }
+
+        internal void Setup(AudioService audio)
+        {
+            _audio = audio;
         }
 
         public async UniTask ShowTutorial()
@@ -55,6 +62,7 @@ namespace MiguelGameDev.Anastasis
             if (Input.GetButtonDown("Action"))
             {
                 _checkInput = false;
+                _audio.PlayClickSfx();
                 _nextText.gameObject.SetActive(false);
             }
         }
