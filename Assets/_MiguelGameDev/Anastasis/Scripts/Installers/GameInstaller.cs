@@ -33,7 +33,7 @@ namespace MiguelGameDev.Anastasis
         {
             var playerGoals = new PlayerGoals(_testGoal);
 
-            var playerAttributes = new PlayerAttributes(
+            var playerAttributes = new CharacterAttributes(
                     new FloatAttribute(_playerSettings.BaseSpeed),
                     new IntegerAttribute(_playerSettings.BaseMaxHealth),
                     new IntegerAttribute(_playerSettings.BaseMaxHealth),
@@ -43,9 +43,8 @@ namespace MiguelGameDev.Anastasis
             var abilityFactory = new AbilityFactory();
 
             var pickAbilityUseCase = new PlayerPickAbilityUseCase(_screensMediator, _abilityCatalog);
-            var playerLevelUpUseCase = new PlayerLevelUpUseCase(pickAbilityUseCase);
 
-            _player.Setup(JESUS_TEAM_ID, playerAttributes, abilityFactory, playerLevelUpUseCase);
+            _player.Setup(JESUS_TEAM_ID, playerAttributes, abilityFactory, pickAbilityUseCase);
 
             var initGameUseCase = new InitGameUseCase(_screensMediator, _cameraPositioner, _followerCamera, _player, _audio, pickAbilityUseCase);
 

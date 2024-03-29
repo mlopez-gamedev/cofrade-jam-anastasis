@@ -1,6 +1,6 @@
 ﻿using MiguelGameDev.Anastasis;
 
-public readonly struct PlayerAttributes
+public readonly struct CharacterAttributes
 {
     public FloatAttribute Speed { get; }
     public IntegerAttribute MaxHealth { get; }
@@ -8,7 +8,7 @@ public readonly struct PlayerAttributes
     public FloatAttribute DamageMultiplier { get; }
     public FloatAttribute InvulnerabilityDuration { get; }
 
-    public PlayerAttributes(FloatAttribute speed, IntegerAttribute maxHealth, IntegerAttribute currentHealth,
+    public CharacterAttributes(FloatAttribute speed, IntegerAttribute maxHealth, IntegerAttribute currentHealth,
             FloatAttribute damageMultiplier, FloatAttribute invulnerabilityDuration)
     {
         Speed = speed;

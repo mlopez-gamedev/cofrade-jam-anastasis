@@ -57,6 +57,11 @@ namespace MiguelGameDev.Anastasis
 
         private async UniTask PickAbility(CharacterAbilities characterAbilities, List<AbilityConfig> availableAbilities)
         {
+            if (availableAbilities.Count == 0)
+            {
+                return;
+            }
+
             var abilities = GetRandomAbilities(ABILITIES_AMOUNT, availableAbilities);
             var ability = await _screensMediator.PickAbility(characterAbilities, abilities);
             if (characterAbilities.AddAbility(ability))

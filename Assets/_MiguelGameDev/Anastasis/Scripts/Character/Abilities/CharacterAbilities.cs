@@ -10,7 +10,7 @@ namespace MiguelGameDev.Anastasis
     {
         private readonly Transform _transform;
         private readonly int _teamId;
-        private readonly PlayerAttributes _playerAttributes;
+        private readonly CharacterAttributes _playerAttributes;
         private readonly ActivateCrownOfThornsUseCase _activateCrownOfThornsUseCase;
         private readonly AbilityFactory _factory;
 
@@ -18,10 +18,10 @@ namespace MiguelGameDev.Anastasis
 
         public Transform Transform => _transform;
         public int TeamId => _teamId;
-        public PlayerAttributes PlayerAttributes => _playerAttributes;
+        public CharacterAttributes PlayerAttributes => _playerAttributes;
         public ActivateCrownOfThornsUseCase ActivateCrownOfThornsUseCase => _activateCrownOfThornsUseCase;
 
-        public CharacterAbilities(Transform transform, int teamId, PlayerAttributes playerAttributes, AbilityFactory factory, ActivateCrownOfThornsUseCase activateCrownOfThornsUseCase)
+        public CharacterAbilities(Transform transform, int teamId, CharacterAttributes playerAttributes, AbilityFactory factory, ActivateCrownOfThornsUseCase activateCrownOfThornsUseCase)
         {
             _transform = transform;
             _teamId = teamId;

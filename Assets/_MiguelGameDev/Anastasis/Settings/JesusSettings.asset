@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7af47160392b9740a8fbbf7120ab3c9, type: 3}
   m_Name: JesusSettings
   m_EditorClassIdentifier: 
-  _baseSpeed: 10
+  _baseSpeed: 6
   _baseMaxHealth: 30
   _baseInvulnerabilityDuration: 0.5
   _baseDamageMultiplier: 1

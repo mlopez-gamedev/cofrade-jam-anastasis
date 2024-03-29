@@ -1,74 +1,52 @@
-using MiguelGameDev.Anastasis;
-using Sirenix.OdinInspector;
+﻿using Sirenix.OdinInspector;
 using UnityEngine;
 
-public class PlayerFacade : MonoBehaviour
+namespace MiguelGameDev.Anastasis
 {
-    [SerializeField] CrownOfThornsAvatar _crownOfThrons;
 
-    [SerializeField] CharacterController _characterController;
-    [SerializeField] CharacterAnimation _animation;
-    [SerializeField] CharacterAudio _audio;
-    [SerializeField] CharacterDamageReceiver _damageReceiver;
-
-    [ShowInInspector, HideInEditorMode, BoxGroup("Game State")] CharacterAbilities _abilities;
-    [ShowInInspector, HideInEditorMode, BoxGroup("Game State")] private CharacterMotor _motor;
-    [ShowInInspector, HideInEditorMode, BoxGroup("Game State")] private CharacterHealth _health;
-    private UnityLegacyCharacterInput _input;
-
-    public CharacterAbilities Abilities => _abilities;
-
-    public void Setup(int teamId, PlayerAttributes playerAttributes, AbilityFactory abilityFactory, PlayerLevelUpUseCase playerLevelUpUseCase)
+    public class PlayerFacade : CharacterFacade
     {
-        var activateCrownOfThornsUseCase = new ActivateCrownOfThornsUseCase(_crownOfThrons);
+        [ShowInInspector, HideInEditorMode, BoxGroup("Game State")] protected CharacterAbilities _abilities;
+        [ShowInInspector, HideInEditorMode, BoxGroup("Game State")] protected PlayerExperience _experience;
 
-        _motor = new CharacterMotor(_characterController, playerAttributes.Speed);
-        _health = new CharacterHealth(playerAttributes.MaxHealth, playerAttributes.CurrentHealth);
-        _abilities = new CharacterAbilities(transform, teamId, playerAttributes, abilityFactory, activateCrownOfThornsUseCase);
+        [SerializeField] CrownOfThornsAvatar _crownOfThrons;
 
-        var moveUseCase = new MoveCharacterUseCase(_motor, _animation);
-        
-        _input = new UnityLegacyCharacterInput(moveUseCase);
+        public CharacterAbilities Abilities => _abilities;
+        public PlayerExperience Experience => _experience;
 
-        var dieUseCase = new PlayerDieUseCase(_motor, _animation, _audio);
-        var takeDamageUseCase = new TakeDamageUseCase(_health, _motor, _input, _animation, _audio, dieUseCase, _crownOfThrons);
+        public void Setup(int teamId, CharacterAttributes attributes, AbilityFactory abilityFactory, PlayerPickAbilityUseCase playerPickAbilityUseCase)
+        {
+            var activateCrownOfThornsUseCase = new ActivateCrownOfThornsUseCase(_crownOfThrons);
 
-        _damageReceiver.Setup(teamId, playerAttributes.InvulnerabilityDuration, takeDamageUseCase);
-    }
+            _attributes = attributes;
 
-    public void WakeUp()
-    {
-        _animation.WakeUp();
-    }
+            _motor = new CharacterMotor(_characterController, _attributes.Speed);
+            _health = new CharacterHealth(_attributes.MaxHealth, _attributes.CurrentHealth);
+            _abilities = new CharacterAbilities(transform, teamId, attributes, abilityFactory, activateCrownOfThornsUseCase);
 
-    public void Init()
-    {
-        _input.Init();
-        _motor.Init();
-    }
+            var playerLevelUpUseCase = new PlayerLevelUpUseCase(_abilities, playerPickAbilityUseCase);
+            _experience = new PlayerExperience(playerLevelUpUseCase);
 
-    private void Update()
-    {
-        _input.Update();
-        _motor.Update();
-        _abilities.Update();
-    }
+            var moveUseCase = new MoveCharacterUseCase(_motor, _animation);
 
-    public void Pause()
-    {
+            _input = new UnityLegacyCharacterInput(moveUseCase);
 
-    }
+            var dieUseCase = new PlayerDieUseCase(_motor, _animation, _audio);
+            var takeDamageUseCase = new TakeDamageUseCase(_health, _motor, _input, _animation, _audio, dieUseCase, _crownOfThrons);
 
-    public void Resume()
-    {
+            _damageReceiver.Setup(teamId, attributes.InvulnerabilityDuration, takeDamageUseCase);
+        }
 
-    }
+        protected override void Update()
+        {
+            base.Update();
+            _abilities.Update();
+        }
 
-    private void OnDestroy()
-    {
-        _abilities?.Release();
-        _input?.SetEnable(false);
-        _motor?.Stop();
-
+        protected override void OnDestroy()
+        {
+            base.OnDestroy();
+            _abilities?.Release();
+        }
     }
 }

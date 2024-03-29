@@ -2,6 +2,17 @@
 
 namespace MiguelGameDev.Anastasis
 {
+    public class GameDirector
+    {
+        private readonly PlayerGoals _playerGoals;
+
+        public GameDirector(PlayerGoals playerGoals)
+        {
+            _playerGoals = playerGoals;
+        }
+    }
+
+
     public class PlayerGoals
     {
         private Transform _target;

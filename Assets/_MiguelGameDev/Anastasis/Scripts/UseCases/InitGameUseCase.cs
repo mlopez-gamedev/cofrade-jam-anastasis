@@ -4,7 +4,6 @@ using UnityEngine;
 
 namespace MiguelGameDev.Anastasis
 {
-
     public class InitGameUseCase
     {
         private readonly ScreensMediator _screensMediator;

@@ -12,17 +12,17 @@ namespace MiguelGameDev.Anastasis
         private readonly CharacterAudio _audio;
         private readonly CharacterDieUseCase _dieUseCase;
 
-        private readonly CrownOfThornsAvatar _crownOfThornsAvatar;
+        private readonly IDamageEffector _damageEffector;
 
         public TakeDamageUseCase(CharacterHealth health, CharacterMotor motor, CharacterInput characterInput, CharacterAnimation animation, 
-                CharacterAudio audio, CharacterDieUseCase dieUseCase, CrownOfThornsAvatar crownOfThornsAvatar = null)
+                CharacterAudio audio, CharacterDieUseCase dieUseCase, IDamageEffector damageEffector = null)
         {
             _health = health;
             _motor = motor;
             _characterInput = characterInput;
             _animation = animation;
             _audio = audio;
-            _crownOfThornsAvatar = crownOfThornsAvatar;
+            _damageEffector = damageEffector;
             _dieUseCase = dieUseCase;
         }
 
@@ -33,7 +33,7 @@ namespace MiguelGameDev.Anastasis
                 return false;
             }
 
-            _crownOfThornsAvatar.TryReturnDamage(damageInfo);
+            _damageEffector.DoDamageEffector(damageInfo);
             Push(damageInfo.PushForce);
             Stunt(damageInfo.StuntDuration);
 

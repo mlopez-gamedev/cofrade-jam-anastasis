@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace MiguelGameDev.Anastasis
 {
-    public class CrownOfThornsAvatar : MonoBehaviour
+    public class CrownOfThornsAvatar : MonoBehaviour, IDamageEffector
     {
         private CrownOfThornsAbility _ability;
 
@@ -17,7 +17,7 @@ namespace MiguelGameDev.Anastasis
             gameObject.SetActive(true);
         }
 
-        internal void TryReturnDamage(DamageInfo damageInfo)
+        public void DoDamageEffector(DamageInfo damageInfo)
         {
             if (!gameObject.activeSelf)
             {

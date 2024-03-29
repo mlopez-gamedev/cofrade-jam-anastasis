@@ -1,20 +1,22 @@
-﻿namespace MiguelGameDev.Anastasis
+﻿using Cysharp.Threading.Tasks;
+using UnityEngine;
+
+namespace MiguelGameDev.Anastasis
 {
     public class PlayerLevelUpUseCase
     {
+        private readonly CharacterAbilities _characterAbilities;
         private readonly PlayerPickAbilityUseCase _playerPickAbilityUseCase;
 
-        public PlayerLevelUpUseCase(PlayerPickAbilityUseCase playerPickAbilityUseCase)
+        public PlayerLevelUpUseCase(CharacterAbilities characterAbilities, PlayerPickAbilityUseCase playerPickAbilityUseCase)
         {
+            _characterAbilities = characterAbilities;
             _playerPickAbilityUseCase = playerPickAbilityUseCase;
         }
 
-        public void PlayerLevelUp()
+        public void LevelUp()
         {
-            // stop
-            // check if ability available
-            //    pick and apply ability
-            // continue
+            _playerPickAbilityUseCase.PickRandomAbility(_characterAbilities).Forget();
         }
     }
 }

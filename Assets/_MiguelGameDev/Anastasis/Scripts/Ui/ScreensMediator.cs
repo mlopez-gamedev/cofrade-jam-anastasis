@@ -1,7 +1,5 @@
 ﻿using Cysharp.Threading.Tasks;
 using Sirenix.OdinInspector;
-using System;
-using System.Threading.Tasks;
 using UnityEngine;
 
 namespace MiguelGameDev.Anastasis
