@@ -8,7 +8,8 @@ namespace MiguelGameDev.Anastasis
     public class EnemyWavesSpawner : MonoBehaviour
     {
         private const float MIN_DISTANCE = 15f;
-        private const float MAX_DISTANCE = 20f;
+        private const float MAX_DISTANCE = 18f;
+        private const float RANDOM_ANGLE = 90f;
 
         private Transform _playerTransform;
         private EnemiesFactory _enemiesFactory;
@@ -81,12 +82,24 @@ namespace MiguelGameDev.Anastasis
 
         private bool GetSpawnPosition(out Vector3 position)
         {
-            var playerPosition = _playerTransform.position;
+            return GetSpawnPosition(_playerTransform, out position);
+        }
+
+        public static bool GetSpawnPosition(Transform playerTransform, out Vector3 position)
+        {
             bool isValid;
+
+            position = GetForwardPosition(playerTransform);
+            isValid = IsValidPosition(position);
+            if (isValid)
+            {
+                return true;
+            }
+
             int maxTries = 3;
             do
             {
-                position = GetRandomPosition(playerPosition);
+                position = GetRandomPosition(playerTransform.position);
                 isValid = IsValidPosition(position);
                 if (!isValid)
                 {
@@ -98,14 +111,28 @@ namespace MiguelGameDev.Anastasis
             return isValid;
         }
 
-        public static Vector3 GetRandomPosition(Vector3 playerPosition)
+        private static Vector3 GetForwardPosition(Transform transform)
+        {
+            var randomAngle = Random.Range(-RANDOM_ANGLE, RANDOM_ANGLE);
+            var randomDistance = Random.Range(MIN_DISTANCE, MAX_DISTANCE);
+
+            var direction =  Quaternion.AngleAxis(randomAngle, Vector3.forward) * transform.forward;
+            direction.y = 0;
+
+            var offset = direction.normalized * randomDistance;
+
+            return transform.position + offset;
+        }
+
+        private static Vector3 GetRandomPosition(Vector3 playerPosition)
         {
             var distance = Random.Range(MIN_DISTANCE, MAX_DISTANCE);
             var offset = new Vector3(Random.Range(-1f, 1f), 0, Random.Range(-1f, 1f)).normalized * distance;
+
             return playerPosition + offset;
         }
 
-        private bool IsValidPosition(Vector3 position)
+        private static bool IsValidPosition(Vector3 position)
         {
             if (position.x < -480f || position.x > 480f)
             {

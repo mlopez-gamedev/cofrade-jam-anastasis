@@ -52,6 +52,7 @@ namespace MiguelGameDev.Anastasis
 
         public virtual void Stop()
         {
+            _animation.Stop();
             _characterUi.gameObject.SetActive(false);
             _input?.SetEnable(false);
             _motor?.Stop();

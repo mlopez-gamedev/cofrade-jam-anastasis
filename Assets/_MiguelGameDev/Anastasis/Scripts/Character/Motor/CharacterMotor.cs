@@ -1,5 +1,8 @@
 ﻿using Sirenix.OdinInspector;
+using System;
+using System.Collections;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 namespace MiguelGameDev.Anastasis
 {
@@ -77,5 +80,9 @@ namespace MiguelGameDev.Anastasis
             _characterController.SimpleMove(_velocity);
         }
 
+        internal void Teleport(Vector3 position)
+        {
+            _transform.position = position;
+        }
     }
 }

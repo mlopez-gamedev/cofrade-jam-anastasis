@@ -30,7 +30,8 @@ namespace MiguelGameDev.Anastasis
             _dieEffect.Play();
 
             await _playerKillEnemyUseCase.PlayerKillEnemy(_enemyFacade, _experience);
-
+            await UniTask.WaitForSeconds(1f);
+            Object.Destroy(_enemyFacade.gameObject);
             return true;
         }
     }

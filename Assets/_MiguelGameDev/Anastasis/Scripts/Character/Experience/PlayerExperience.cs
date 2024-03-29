@@ -7,8 +7,9 @@ namespace MiguelGameDev.Anastasis
     public class PlayerExperience
     {
         [ShowInInspector] int _maxLevel = 120;
-        [ShowInInspector] int _baseExperienceNeeded = 0;
-        [ShowInInspector] int _experienceIncrement = 100;
+        [ShowInInspector] int _baseExperienceNeeded = 20;
+        [ShowInInspector] int _experienceIncrement = 50;
+        [ShowInInspector] int _power = 2;
 
         [ShowInInspector] private readonly PlayerLevelUpUseCase _playerLevelUpUseCase;
         [ShowInInspector] private readonly IntegerAttribute _currentLevel;
@@ -66,7 +67,7 @@ namespace MiguelGameDev.Anastasis
             {
                 return;
             }
-            _nextLevelExperience.Value = _baseExperienceNeeded + _experienceIncrement * (int)Mathf.Pow(_currentLevel.Value, 1.5f);
+            _nextLevelExperience.Value = _baseExperienceNeeded + _experienceIncrement * (int)Mathf.Pow(_currentLevel.Value, _power);
         }
     }
 }

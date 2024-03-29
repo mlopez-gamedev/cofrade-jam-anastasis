@@ -1,7 +1,5 @@
 using Cysharp.Threading.Tasks;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Video;
 
 namespace MiguelGameDev.Anastasis
 {
@@ -79,6 +77,11 @@ namespace MiguelGameDev.Anastasis
             }
             _animator.SetFloat(_attackSpeedMultiplier, speedMultiplier);
             return _attackClip.length * speedMultiplier;
+        }
+
+        internal void Stop()
+        {
+            _animator.SetFloat(_speedSqrId, 0);
         }
     }
 }

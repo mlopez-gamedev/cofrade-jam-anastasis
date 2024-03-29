@@ -42,5 +42,10 @@ namespace MiguelGameDev.Anastasis
             _animation.SetSpeedSqr(currentSpeedSqr);
             // Step sounds?
         }
+
+        public void Teleport(Vector3 position)
+        {
+            _motor.Teleport(position);
+        }
     }
 }
