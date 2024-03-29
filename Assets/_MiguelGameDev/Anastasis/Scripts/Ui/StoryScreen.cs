@@ -90,13 +90,13 @@ namespace MiguelGameDev.Anastasis
 
             if (Input.GetButtonDown("Action"))
             {
-                _audio.PlayClickSfx();
                 if (!_storyVisibilityAnimation.IsComplete)
                 {
                     _storyVisibilityAnimation.Complete();
                     return;
                 }
 
+                _audio.PlayClickSfx();
                 _checkInput = false;
                 _nextText.gameObject.SetActive(false);
             }

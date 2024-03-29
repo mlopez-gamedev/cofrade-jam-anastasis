@@ -13,7 +13,7 @@ namespace MiguelGameDev.Anastasis
 
         private bool _checkInput;
 
-        private AudioService _audioService;
+        private AudioService _audio;
         private InitGameUseCase _initGameUseCase;
 
         private void Awake()
@@ -22,9 +22,9 @@ namespace MiguelGameDev.Anastasis
             _canvasGroup.gameObject.SetActive(true);
         }
 
-        public void Setup(AudioService audioService, InitGameUseCase initGameUseCase)
+        public void Setup(AudioService audio, InitGameUseCase initGameUseCase)
         {
-            _audioService = audioService;
+            _audio = audio;
             _initGameUseCase = initGameUseCase;
         }
 
@@ -51,7 +51,7 @@ namespace MiguelGameDev.Anastasis
             if (Input.GetButtonDown("Action"))
             {
                 _checkInput = false;
-                _audioService.PlayClickSfx();
+                _audio.PlayClickSfx();
                 _initGameUseCase.InitGame();
             }
         }

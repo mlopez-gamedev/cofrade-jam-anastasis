@@ -7,21 +7,16 @@ namespace MiguelGameDev.Anastasis
 
     public class InitGameUseCase
     {
-        private readonly TitleScreen _titleScreen;
-        private readonly StoryScreen _storyScreen;
-        private readonly TutorialScreen _tutorialScreen;
+        private readonly ScreensMediator _screensMediator;
         private readonly CameraPositioner _camera;
         private readonly FollowerCamera _followerCamera;
         private readonly PlayerFacade _player;
         private readonly AudioService _audio;
         private readonly PlayerPickAbilityUseCase _pickAbilityUseCase;
 
-        public InitGameUseCase(TitleScreen titleScreen, StoryScreen storyScreen, TutorialScreen tutorialScreen, 
-                CameraPositioner camera, FollowerCamera followerCamera, PlayerFacade player, AudioService audio, PlayerPickAbilityUseCase pickAbilityUseCase)
+        public InitGameUseCase(ScreensMediator screensMediator, CameraPositioner camera, FollowerCamera followerCamera, PlayerFacade player, AudioService audio, PlayerPickAbilityUseCase pickAbilityUseCase)
         {
-            _titleScreen = titleScreen;
-            _storyScreen = storyScreen;
-            _tutorialScreen = tutorialScreen;
+            _screensMediator = screensMediator;
             _camera = camera;
             _followerCamera = followerCamera;
             _player = player;
@@ -31,14 +26,15 @@ namespace MiguelGameDev.Anastasis
 
         public async void InitGame()
         {
-            await _titleScreen.Hide();
-            await _storyScreen.ShowStory("Story.Intro");
+            await _screensMediator.HideTitle();
+            await _screensMediator.ShowStory("Story.Intro");
             await ZoomOutCamera();
             _player.WakeUp();
             _audio.PlayAmbient();
             await _audio.StopMusic(1f);
-            await _tutorialScreen.ShowTutorial();
+            await _screensMediator.ShowTutorial();
             await _pickAbilityUseCase.PickInitialAbility(_player.Abilities);
+            _screensMediator.ShowMap();
             _audio.PlayMusic(_audio.GameMusicClip);
             StartGame();
         }

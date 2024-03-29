@@ -8,12 +8,12 @@ namespace MiguelGameDev.Anastasis
     {
         public const int ABILITIES_AMOUNT = 3;
 
-        private readonly PickAbilityScreen _pickAbilityScreen;
+        private readonly ScreensMediator _screensMediator;
         private readonly AbilityCatalog _abilityCatalog;
 
-        public PlayerPickAbilityUseCase(PickAbilityScreen pickAbilityScreen, AbilityCatalog abilityCatalog) 
+        public PlayerPickAbilityUseCase(ScreensMediator screensMediator, AbilityCatalog abilityCatalog) 
         {
-            _pickAbilityScreen = pickAbilityScreen;
+            _screensMediator = screensMediator;
             _abilityCatalog = abilityCatalog;
         }
 
@@ -47,7 +47,7 @@ namespace MiguelGameDev.Anastasis
                 fullHealingAbility
             };
 
-            var ability = await _pickAbilityScreen.PickAbility(characterAbilities, abilitiesList.ToArray());
+            var ability = await _screensMediator.PickAbility(characterAbilities, abilitiesList.ToArray());
             if (characterAbilities.AddAbility(ability))
             {
                 // is new;
@@ -58,7 +58,7 @@ namespace MiguelGameDev.Anastasis
         private async UniTask PickAbility(CharacterAbilities characterAbilities, List<AbilityConfig> availableAbilities)
         {
             var abilities = GetRandomAbilities(ABILITIES_AMOUNT, availableAbilities);
-            var ability = await _pickAbilityScreen.PickAbility(characterAbilities, abilities);
+            var ability = await _screensMediator.PickAbility(characterAbilities, abilities);
             if (characterAbilities.AddAbility(ability))
             {
                 // is new;

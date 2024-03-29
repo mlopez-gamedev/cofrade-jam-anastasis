@@ -1273,7 +1273,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3803304387351050475
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1420,8 +1420,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278195261
-  m_fontColor: {r: 0.241, g: 0.07673636, b: 0, a: 1}
+    rgba: 4280881504
+  m_fontColor: {r: 0.3773585, g: 0.065859735, b: 0.16014878, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1633,7 +1633,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 31
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!114 &7006165900459985318
 MonoBehaviour:
@@ -1839,6 +1839,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _fade: 0.25
   _duration: 1.25
+  _unescaleTime: 1
 --- !u!114 &7792559900928914239
 MonoBehaviour:
   m_ObjectHideFlags: 0

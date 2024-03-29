@@ -10,10 +10,7 @@ namespace MiguelGameDev.Anastasis
         private const int DEMONS_TEAM_ID = 1;
 
         [SerializeField, BoxGroup("Audio")] private AudioService _audio;
-        [SerializeField, BoxGroup("UI")] private TitleScreen _titleScreen;
-        [SerializeField, BoxGroup("UI")] private StoryScreen _storyScreen;
-        [SerializeField, BoxGroup("UI")] private TutorialScreen _tutorialScreen;
-        [SerializeField, BoxGroup("UI")] private PickAbilityScreen _pickAbilityScreen;
+        [SerializeField, BoxGroup("Ui")] private ScreensMediator _screensMediator;
         [SerializeField, BoxGroup("Camera")] private CameraPositioner _cameraPositioner;
         [SerializeField, BoxGroup("Camera")] private Vector3 _titlePosition = new Vector3(0, 0, -14f);
         [SerializeField, BoxGroup("Camera")] private Vector3 _gamePosition = new Vector3(0, 0, -14f);
@@ -32,6 +29,8 @@ namespace MiguelGameDev.Anastasis
 
         private UniTask Install()
         {
+            var playerGoals = new PlayerGoals();
+
             var playerAttributes = new PlayerAttributes(
                     new FloatAttribute(_playerSettings.BaseSpeed),
                     new IntegerAttribute(_playerSettings.BaseMaxHealth),
@@ -41,19 +40,17 @@ namespace MiguelGameDev.Anastasis
 
             var abilityFactory = new AbilityFactory();
 
-            var pickAbilityUseCase = new PlayerPickAbilityUseCase(_pickAbilityScreen, _abilityCatalog);
+            var pickAbilityUseCase = new PlayerPickAbilityUseCase(_screensMediator, _abilityCatalog);
             var playerLevelUpUseCase = new PlayerLevelUpUseCase(pickAbilityUseCase);
 
             _player.Setup(JESUS_TEAM_ID, playerAttributes, abilityFactory, playerLevelUpUseCase);
 
-            var initGameUseCase = new InitGameUseCase(_titleScreen, _storyScreen, _tutorialScreen, _cameraPositioner, _followerCamera, _player, _audio, pickAbilityUseCase);
+            var initGameUseCase = new InitGameUseCase(_screensMediator, _cameraPositioner, _followerCamera, _player, _audio, pickAbilityUseCase);
 
             _cameraPositioner.Setup(_titlePosition, _gamePosition);
             _followerCamera.Setup(_followerCameraSettings);
 
-            _titleScreen.Setup(_audio, initGameUseCase);
-            _storyScreen.Setup(_audio);
-            _tutorialScreen.Setup(_audio);
+            _screensMediator.Setup(_audio, _player.transform, playerGoals, initGameUseCase);
 
             Init();
             return UniTask.CompletedTask;
@@ -63,7 +60,7 @@ namespace MiguelGameDev.Anastasis
         private void Init()
         {
             _cameraPositioner.SetAsTitlePosition();
-            _titleScreen.Init();
+            _screensMediator.Init();
         }
     }
 }

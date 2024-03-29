@@ -2,7 +2,6 @@ using UnityEngine;
 
 namespace MiguelGameDev.Anastasis
 {
-
     public class AbilityPanel : MonoBehaviour
     {
         [SerializeField] private AbilityPanelInfo _selectedInfo;

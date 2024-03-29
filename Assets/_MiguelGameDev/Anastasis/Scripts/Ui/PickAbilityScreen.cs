@@ -2,6 +2,7 @@
 using DG.Tweening;
 using I2.Loc;
 using MiguelGameDev.Generic.Extensions;
+using System;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -21,12 +22,19 @@ namespace MiguelGameDev.Anastasis
         private int _selectedAbilityPanelIndex;
         private float _nextSelectTime;
 
+        private AudioService _audio;
         private bool _checkInput;
 
         private void Awake()
         {
             _canvasGroup.gameObject.SetActive(false);
             _actionText.gameObject.SetActive(false);
+        }
+
+
+        internal void Setup(AudioService audio)
+        {
+            _audio = audio;
         }
 
         public async UniTask<AbilityConfig> PickAbility(CharacterAbilities playerAbilities, AbilityConfig[] abilities)
@@ -82,14 +90,17 @@ namespace MiguelGameDev.Anastasis
             var input = Input.GetAxis("Horizontal");
             if (input > 0)
             {
+                _audio.PlaySelectSfx();
                 SelectNext();
             }
             else if (input < 0)
             {
+                _audio.PlaySelectSfx();
                 SelectPrevious();
             }
             else if (Input.GetButton("Action"))
             {
+                _audio.PlayClickSfx();
                 _actionText.gameObject.SetActive(false);
                 _checkInput = false;
             }

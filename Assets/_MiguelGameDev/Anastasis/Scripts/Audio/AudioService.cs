@@ -18,6 +18,7 @@ namespace MiguelGameDev.Anastasis
         [SerializeField, BoxGroup("Audio/Music")] AudioClip _loseMusicClip;
 
         [SerializeField, BoxGroup("Audio/Ui")] AudioClip _clickSfxClip;
+        [SerializeField, BoxGroup("Audio/Ui")] AudioClip _selectSfxClip;
 
         private Tween _fadeMusicTween;
         private float _defaultMusicVolume;
@@ -35,6 +36,12 @@ namespace MiguelGameDev.Anastasis
         {
             _uiAudioSource.pitch = 1f;
             _uiAudioSource.PlayOneShot(_clickSfxClip);
+        }
+
+        internal void PlaySelectSfx()
+        {
+            _uiAudioSource.pitch = 1f;
+            _uiAudioSource.PlayOneShot(_selectSfxClip);
         }
 
         internal void PlayAmbient()
