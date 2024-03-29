@@ -1,9 +1,8 @@
 using Cysharp.Threading.Tasks;
-using DG.Tweening;
-using UnityEngine;
 
 namespace MiguelGameDev.Anastasis
 {
+
     public class InitGameUseCase
     {
         private readonly ScreensMediator _screensMediator;
@@ -11,15 +10,18 @@ namespace MiguelGameDev.Anastasis
         private readonly FollowerCamera _followerCamera;
         private readonly PlayerFacade _player;
         private readonly AudioService _audio;
+        private readonly GameDirector _gameDirector;
         private readonly PlayerPickAbilityUseCase _pickAbilityUseCase;
 
-        public InitGameUseCase(ScreensMediator screensMediator, CameraPositioner camera, FollowerCamera followerCamera, PlayerFacade player, AudioService audio, PlayerPickAbilityUseCase pickAbilityUseCase)
+        public InitGameUseCase(ScreensMediator screensMediator, CameraPositioner camera, FollowerCamera followerCamera, 
+            PlayerFacade player, AudioService audio, GameDirector gameDirector, PlayerPickAbilityUseCase pickAbilityUseCase)
         {
             _screensMediator = screensMediator;
             _camera = camera;
             _followerCamera = followerCamera;
             _player = player;
             _audio = audio;
+            _gameDirector = gameDirector;
             _pickAbilityUseCase = pickAbilityUseCase;
         }
 
@@ -48,6 +50,7 @@ namespace MiguelGameDev.Anastasis
         private void StartGame()
         {
             _player.Init();
+            _gameDirector.Init();
         }
     }
 }

@@ -1,19 +1,69 @@
+using UnityEditor;
 using UnityEngine;
 
 namespace MiguelGameDev.Anastasis
 {
-    public class EnemiesFactory : MonoBehaviour
+    public class EnemiesFactory
     {
-        // Start is called before the first frame update
-        void Start()
-        {
+        private float LEVEL_MULTIPLIER_MULT = 0.25f;
+        private float LEVEL_MULTIPLIER_POW = 1.28f;
+        private readonly EnemyCatalog _catalog;
+        private readonly PlayerKillEnemyUseCase _playerKillEnemyUseCase;
+        private readonly int _teamId;
+        private readonly Transform _playerTransform;
+        private readonly Camera _camera;
 
+        public EnemiesFactory(EnemyCatalog catalog, int teamId, Transform playerTransform, Camera camera, PlayerKillEnemyUseCase playerKillEnemyUseCase)
+        {
+            _catalog = catalog;
+            _teamId = teamId;
+            _playerTransform = playerTransform;
+            _camera = camera;
+            _playerKillEnemyUseCase = playerKillEnemyUseCase;
         }
 
-        // Update is called once per frame
-        void Update()
+        public EnemyFacade CreateEnemy(EnemySettings enemySettings, int level, Vector3 position)
         {
+            var attributes = GenerateAttributes(enemySettings, level);
+            var randomRotation = Quaternion.Euler(0, Random.Range(0, 360), 0);
+            var enemy = Object.Instantiate(enemySettings.Prefab, position, randomRotation);
+            enemy.Setup(_teamId, attributes, enemySettings.BaseExperience * level, _playerTransform, _camera, _playerKillEnemyUseCase);
 
+            return enemy;
+        }
+
+        public EnemyFacade CreateRandomEnemy(int level, Vector3 position)
+        {
+            var enemySettings = _catalog.GetRandomEnemy(level);
+
+            var attributes = GenerateAttributes(enemySettings, level);
+            var randomRotation = Quaternion.Euler(0, Random.Range(0, 360), 0);
+            var enemy = Object.Instantiate(enemySettings.Prefab, position, randomRotation);
+            enemy.Setup(_teamId, attributes, enemySettings.BaseExperience * level, _playerTransform, _camera, _playerKillEnemyUseCase);
+
+            return enemy;
+        }
+
+        private CharacterAttributes GenerateAttributes(EnemySettings settings, int level)
+        {
+            var multiplier = GetLevelMultiplier(level);
+
+            var health = Mathf.CeilToInt(settings.BaseMaxHealth * multiplier);
+            return new CharacterAttributes(
+                    new FloatAttribute(settings.BaseSpeed),
+                    new IntegerAttribute(health),
+                    new IntegerAttribute(health),
+                    new IntegerAttribute(settings.BaseTouchDamage),
+                    new FloatAttribute(settings.BaseDamageMultiplier * multiplier),
+                    new FloatAttribute(settings.BaseInvulnerabilityDuration));
+        }
+
+        public float GetLevelMultiplier(int level)
+        {
+            // Al nivel 110 (máxima subida del player) quiero un multiplicador de x100,
+            // pero no quiero que la primera subida de nivel duplique el multiplicador, así que necesito una subida exponencial
+            // El 1,28 me da lo que quiero
+            return LEVEL_MULTIPLIER_MULT + LEVEL_MULTIPLIER_MULT * Mathf.Pow(level - 1, LEVEL_MULTIPLIER_POW);
         }
     }
 }

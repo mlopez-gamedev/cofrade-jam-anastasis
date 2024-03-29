@@ -1,23 +1,13 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace MiguelGameDev.Anastasis
 {
-    public class GameDirector
-    {
-        private readonly PlayerGoals _playerGoals;
-
-        public GameDirector(PlayerGoals playerGoals)
-        {
-            _playerGoals = playerGoals;
-        }
-    }
-
-
     public class PlayerGoals
     {
-        private Transform _target;
+        private EnemyFacade _target;
 
-        public Transform Target {
+        public EnemyFacade Target {
             get => _target;
             set {
                 if (value == _target)
@@ -31,11 +21,6 @@ namespace MiguelGameDev.Anastasis
 
         public PlayerGoals()
         {
-        }
-
-        public PlayerGoals(Transform target)
-        {
-            _target = target;
         }
     }
 }

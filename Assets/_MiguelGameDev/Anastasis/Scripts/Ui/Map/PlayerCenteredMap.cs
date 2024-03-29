@@ -31,7 +31,7 @@ namespace MiguelGameDev.Anastasis
                 _targetMarker.gameObject.SetActive(true);
             }
 
-            var targetPosition = _playerGoals.Target.position.XZToVector2();
+            var targetPosition = _playerGoals.Target.transform.position.XZToVector2();
             var targetMarkerPosition = targetPosition * _mapScale + _backgroundOffset;
             
             var finalTargetMarkerPosition = targetMarkerPosition.Clamp(-_halfMapSize, _halfMapSize);

@@ -29,7 +29,7 @@ MonoBehaviour:
     _pushForce: 0
   - _amount: 1
     _cooldown: 1.5
-    _range: 4
+    _range: 6
     _duration: 0.4
     _damage: 5
     _stuntDuration: 0
@@ -43,7 +43,7 @@ MonoBehaviour:
     _pushForce: 0
   - _amount: 2
     _cooldown: 1.25
-    _range: 5
+    _range: 7
     _duration: 0.45
     _damage: 6
     _stuntDuration: 0

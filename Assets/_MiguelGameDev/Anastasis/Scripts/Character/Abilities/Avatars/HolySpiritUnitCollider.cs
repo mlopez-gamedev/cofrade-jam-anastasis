@@ -2,6 +2,7 @@
 
 namespace MiguelGameDev.Anastasis
 {
+
     public class HolySpiritUnitCollider : MonoBehaviour
     {
         private HolySpiritAbility _ability;
@@ -13,7 +14,12 @@ namespace MiguelGameDev.Anastasis
 
         private void OnTriggerEnter(Collider other)
         {
-            _ability.TryMakeDamage(other);
+            _ability.TryAddTarget(transform, other);
+        }
+
+        private void OnTriggerExit(Collider other)
+        {
+            _ability.TryRemoveTarget(other);
         }
     }
 }

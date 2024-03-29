@@ -9,9 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3089871048493777759}
+  - component: {fileID: 7125640786523414895}
   - component: {fileID: 2610168012197114169}
   - component: {fileID: 308923903461782429}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BlessingAvatar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34,6 +35,33 @@ Transform:
   - {fileID: 6912530051845102175}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &7125640786523414895
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8790816664378615206}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!135 &2610168012197114169
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -80,6 +108,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: BlessingVfx
       objectReference: {fileID: 0}
+    - target: {fileID: 1343425844583092, guid: 2e23e5b5e278f3745ab853bae317bcb6, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1741184341048988, guid: 2e23e5b5e278f3745ab853bae317bcb6, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 4664119039206506, guid: 2e23e5b5e278f3745ab853bae317bcb6, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -118,6 +154,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4664119039206506, guid: 2e23e5b5e278f3745ab853bae317bcb6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198124967849047274, guid: 2e23e5b5e278f3745ab853bae317bcb6,
+        type: 3}
+      propertyPath: moveWithTransform
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

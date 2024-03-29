@@ -7,9 +7,11 @@ namespace MiguelGameDev.Anastasis
     {
         [SerializeField] protected CharacterController _characterController;
         [SerializeField] protected CharacterUi _characterUi;
+        [SerializeField] protected ParticleSystem _hurtEffect;
 
         [SerializeField] protected CharacterAnimation _animation;
         [SerializeField] protected CharacterAudio _audio;
+        [SerializeField] protected Damager _damager;
         [SerializeField] protected CharacterDamageReceiver _damageReceiver;
 
         [ShowInInspector, HideInEditorMode, BoxGroup("Game State")] protected CharacterMotor _motor;
@@ -22,6 +24,7 @@ namespace MiguelGameDev.Anastasis
         public CharacterDamageReceiver DamageReceiver => _damageReceiver;
         public CharacterMotor Motor => _motor;
         public CharacterHealth Health => _health;
+        public CharacterInput Input => _input;
         public CharacterAttributes Attributes => _attributes;
 
         private void Awake()
@@ -34,7 +37,7 @@ namespace MiguelGameDev.Anastasis
             _animation.WakeUp();
         }
 
-        public void Init()
+        public virtual void Init()
         {
             _characterUi.gameObject.SetActive(true);
             _input.Init();

@@ -61,8 +61,8 @@ MonoBehaviour:
 
         Recovers all
         health.'
-      - "\"\xA1Padre! Perdona mis pecados, llena mi coraz\xF3n de esperanza\"\nRecupera
-        toda la salud."
+      - "\"\xA1Padre, ten compasi\xF3n! Perdona mis pecados, llena de esperanza mi
+        coraz\xF3n.\"\nRecupera toda la salud."
       Flags: 0000
       Languages_Touch: []
     - Term: Ability/Compassion.Title
@@ -201,6 +201,14 @@ MonoBehaviour:
       - "\xA1Nueva!"
       Flags: 0000
       Languages_Touch: []
+    - Term: PickAbility.Header
+      TermType: 0
+      Description: 
+      Languages:
+      - Pick ability
+      - Elige una habilidad
+      Flags: 0000
+      Languages_Touch: []
     - Term: Story.Intro
       TermType: 0
       Description: 
@@ -232,6 +240,43 @@ MonoBehaviour:
         es lo que durante ese tiempo ocurri\xF3 en el Hades.\nEsta es la historia
         jam\xE1s contada de la Anastasis o Descensus ad inferos: el descenso de Jesucristo
         a los infiernos."
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Story.Lose
+      TermType: 0
+      Description: 
+      Languages:
+      - 'Jesus Christ has succumbed to sin. With the gates of hell closed and the
+        Princes of Hell under warning, the souls of mortals will be damned for all
+        eternity.
+
+        Will this defeat obey an even greater, even more Divine
+        Plan of Our Father and Lord Creator Yahweh?'
+      - "Jesucristo ha sucumbido al pecado. Con las puertas del infierno cerradas
+        y los Principes del Infierno bajo aviso, las almas de los mortales estar\xE1n
+        condenadas por toda la eternidad.\n\xBFObedecer\xE1 est\xE1 derrota a un
+        Plan a\xFAn m\xE1s grande, a\xFAn m\xE1s Divino, de Nuestro Padre y Se\xF1or
+        Creador Yahveh?"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Story.Win
+      TermType: 0
+      Description: 
+      Languages:
+      - 'Jesus Christ defeated death and broke the gates of Hell, bringing with him
+        the souls of the righteous and forgiveness of the capital sin.
+
+        And
+        before ascending to Heaven he appeared to Cephas, and then to his twelve
+        disciples, to bring them the good news:
+
+        That soon the Kingdom of
+        God, His Father, would descend to the earth of mortals.'
+      - "Jesucristo venci\xF3 a la muerte y quebr\xF3 las puertas del Infierno, trayendo
+        consigo las almas de los justos y el perd\xF3n del pecado capital.\nY antes
+        de ascender a los Cielos se apareci\xF3 a Cefas, y despu\xE9s a sus doce
+        disc\xEDpulos, para traerles la buena nueva:\nQue pronto el Reino de Dios,
+        Su Padre, descender\xEDa a la tierra de los mortales."
       Flags: 0000
       Languages_Touch: []
     - Term: Title.StartGame
@@ -275,6 +320,14 @@ MonoBehaviour:
       - "Vence a los Se\xF1ores del Hades"
       Flags: 0000
       Languages_Touch: []
+    - Term: Tutorial.Header
+      TermType: 0
+      Description: 
+      Languages:
+      - How to play
+      - "C\xF3mo se juega"
+      Flags: 0000
+      Languages_Touch: []
     - Term: Tutorial.UseYourPower.Content
       TermType: 0
       Description: 
@@ -289,6 +342,14 @@ MonoBehaviour:
       Languages:
       - Unleash your sacred power
       - Desata tu poder divino
+      Flags: 0000
+      Languages_Touch: []
+    - Term: FullHeal
+      TermType: 0
+      Description: 
+      Languages:
+      - Heal
+      - Curar
       Flags: 0000
       Languages_Touch: []
     CaseInsensitiveTerms: 0
@@ -306,7 +367,7 @@ MonoBehaviour:
     Google_WebServiceURL: https://script.google.com/macros/s/AKfycby7Z1NeRJuviHmJ8k9pIw8KB0DfYgfDkoxOqMyCitRaRXHUZgdmROB2vHxHblgK0IQaEA/exec
     Google_SpreadsheetKey: 19_6I7U37VQj85MK_-VDOyrctyHmV2PQUvcU4Vh1WBrQ
     Google_SpreadsheetName: I2Loc cofrade-jam Localization
-    Google_LastUpdatedVersion: 1711654663784
+    Google_LastUpdatedVersion: 1711717992690
     Google_Password: change_this
     GoogleUpdateFrequency: 3
     GoogleInEditorCheckFrequency: 2

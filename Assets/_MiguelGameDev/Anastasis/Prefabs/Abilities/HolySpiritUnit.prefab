@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 847658410794304967}
   - component: {fileID: 4889974481987370938}
   - component: {fileID: 549734138388355847}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: WhiteGlobe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4829,7 +4829,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4628437057682061008}
   - component: {fileID: 6512412987527736387}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: HolySpiritUnit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4877,9 +4877,9 @@ GameObject:
   - component: {fileID: 535954425708327561}
   - component: {fileID: 8337741194303975473}
   - component: {fileID: 7272009719560411297}
-  - component: {fileID: 8549935424610369189}
+  - component: {fileID: 4334019133806484541}
   - component: {fileID: 2471000930984691129}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: HolySpiritVfx
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9748,7 +9748,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
---- !u!135 &8549935424610369189
+--- !u!135 &4334019133806484541
 SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9763,11 +9763,11 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.5
+  m_Radius: 1.2
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &2471000930984691129
 MonoBehaviour:
@@ -9792,7 +9792,7 @@ GameObject:
   - component: {fileID: 6812761144169050591}
   - component: {fileID: 5811225833505936703}
   - component: {fileID: 4281677470087681282}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Nova
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14580,7 +14580,7 @@ GameObject:
   - component: {fileID: 3374510556319782470}
   - component: {fileID: 2997094313524095151}
   - component: {fileID: 1222322415222863548}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Glow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19368,7 +19368,7 @@ GameObject:
   - component: {fileID: 8172494131121682117}
   - component: {fileID: 5952918688674868127}
   - component: {fileID: 4805539866814688577}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SparkTrail
   m_TagString: Untagged
   m_Icon: {fileID: 0}

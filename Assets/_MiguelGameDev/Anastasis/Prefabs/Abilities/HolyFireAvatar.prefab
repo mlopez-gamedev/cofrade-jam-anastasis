@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1354824743617954653}
   - component: {fileID: 3512820362973952055}
   - component: {fileID: 6775871408415703890}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: FloorRing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4790,7 +4790,7 @@ GameObject:
   - component: {fileID: 6062120273735932617}
   - component: {fileID: 2748219172371960491}
   - component: {fileID: 2127717694888166803}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: MagicSparkles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9605,7 +9605,7 @@ GameObject:
   - component: {fileID: 3529365515096710680}
   - component: {fileID: 7998354735192293357}
   - component: {fileID: 5527722914236848036}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: GlowCircle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14366,7 +14366,7 @@ GameObject:
   - component: {fileID: 801705328294221205}
   - component: {fileID: 4985595486166709867}
   - component: {fileID: 17662892037149345}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PortalDust
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19145,7 +19145,7 @@ GameObject:
   - component: {fileID: 6284077363253799782}
   - component: {fileID: 8167835480910181720}
   - component: {fileID: -7240814107070191269}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: HolyFireAvatar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19214,7 +19214,7 @@ GameObject:
   - component: {fileID: 5339661628521484663}
   - component: {fileID: 2200008831621267713}
   - component: {fileID: 6291454898334779986}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: VerticalGlow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23994,7 +23994,7 @@ GameObject:
   - component: {fileID: 4676157651182585203}
   - component: {fileID: 823377809795500320}
   - component: {fileID: 2068478894785733196}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: HolyFireVxf
   m_TagString: Untagged
   m_Icon: {fileID: 0}

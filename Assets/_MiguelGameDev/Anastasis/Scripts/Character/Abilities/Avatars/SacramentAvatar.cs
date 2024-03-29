@@ -8,6 +8,7 @@ namespace MiguelGameDev.Anastasis
     {
         [SerializeField] Transform _projectile;
         [SerializeField] AudioSource _audioSource;
+        [SerializeField] SacramentCollider _collider;
 
         private SacramentsAbility _ability;
         private ObjectPool<SacramentAvatar> _objectPool;
@@ -22,6 +23,7 @@ namespace MiguelGameDev.Anastasis
         {
             _ability = ability;
             _objectPool = objectPool;
+            _collider.Setup(this);
         }
 
         internal void Init(Vector3 position, Quaternion rotation, float forward, float delay)
@@ -68,9 +70,9 @@ namespace MiguelGameDev.Anastasis
             _projectile.position = _projectile.position + _projectile.forward * _speed * Time.deltaTime;
         }
 
-        private void OnTriggerEnter(Collider other)
+        public void TryMakeDamage(Transform causer, Collider other)
         {
-            if (_ability.TryMakeDamage(other))
+            if (_ability.TryMakeDamage(causer, other))
             {
                 Timing.KillCoroutines(_killCoroutine);
                 Kill();

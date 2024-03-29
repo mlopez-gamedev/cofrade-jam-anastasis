@@ -13,6 +13,21 @@ namespace MiguelGameDev.Anastasis
             _animation = animation;
         }
 
+        public void Move(Vector3 direction)
+        {
+            float previousSpeedSqr = _motor.SpeedSqr;
+            _motor.SetVelocity(direction);
+
+            float currentSpeedSqr = _motor.SpeedSqr;
+            if (previousSpeedSqr == currentSpeedSqr)
+            {
+                return;
+            }
+
+            _animation.SetSpeedSqr(currentSpeedSqr);
+            // Step sounds?
+        }
+
         public void Move(Vector2 inputVelocity)
         {
             float previousSpeedSqr = _motor.SpeedSqr;

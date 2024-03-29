@@ -29,7 +29,7 @@ namespace MiguelGameDev.Anastasis
                 _targetMarker.gameObject.SetActive(true);
             }
 
-            UpdateMarker(_playerGoals.Target, _targetMarker);
+            UpdateMarker(_playerGoals.Target.transform, _targetMarker);
         }
 
         private void UpdateMarker(Transform actor, RectTransform marker)

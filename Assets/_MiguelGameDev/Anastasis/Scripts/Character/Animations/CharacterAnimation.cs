@@ -5,7 +5,6 @@ using UnityEngine.Video;
 
 namespace MiguelGameDev.Anastasis
 {
-
     public class CharacterAnimation : MonoBehaviour
     {
         [SerializeField] protected Animator _animator;
@@ -58,14 +57,14 @@ namespace MiguelGameDev.Anastasis
             _animator.SetTrigger(_hurtId);
         }
 
-        public void SetIsDead(bool isDead)
+        public virtual void SetIsDead(bool isDead)
         {
             _animator.SetBool(_isDeadId, isDead);
         }
 
         public UniTask TriggerAttack(float maxDuration)
         {
-            _animator.SetTrigger(_hurtId);
+            _animator.SetTrigger(_attackId);
             float duration = SetAttackSpeed(maxDuration);
             return UniTask.Delay((int)((duration + 0.02f) * 1000));
         }

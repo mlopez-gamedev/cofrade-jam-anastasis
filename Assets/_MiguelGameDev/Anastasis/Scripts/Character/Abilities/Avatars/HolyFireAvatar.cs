@@ -1,10 +1,10 @@
 ﻿using MEC;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
 
 namespace MiguelGameDev.Anastasis
 {
-
     public class HolyFireAvatar : MonoBehaviour
     {
         [SerializeField] AudioSource _audioSource;
@@ -14,10 +14,13 @@ namespace MiguelGameDev.Anastasis
         private ObjectPool<HolyFireAvatar> _objectPool;
         private bool _enable = false;
 
+        private List<Collider> _targetsDamaged;
+
         internal void Setup(HolyFireAbility ability, ObjectPool<HolyFireAvatar> objectPool)
         {
             _ability = ability;
             _objectPool = objectPool;
+            _targetsDamaged = new List<Collider>();
         }
 
         internal void Init(Vector3 position)
@@ -54,13 +57,25 @@ namespace MiguelGameDev.Anastasis
             {
                 return;
             }
-            _ability.TryMakeDamage(other);
+
+            if (_targetsDamaged.Contains(other))
+            {
+                return;
+            }
+
+            if (!_ability.TryMakeDamage(other))
+            {
+                return;
+            }
+
+            _targetsDamaged.Add(other);
         }
 
         internal void Finish()
         {
             _enable = false;
             gameObject.SetActive(false);
+            _targetsDamaged.Clear();
         }
     }
 }

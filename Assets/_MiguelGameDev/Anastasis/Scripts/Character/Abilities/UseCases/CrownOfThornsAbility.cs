@@ -71,7 +71,7 @@ namespace MiguelGameDev.Anastasis
             var damage = Mathf.CeilToInt(damageInfo.Damage * damageMultiplier);
             var pushForce = CalcPushForce(damageInfo.Instigator);
 
-            characterDamageReceiver.TakeDamage(new DamageInfo(_owner.Transform, _owner.TeamId, damage, _stuntDuration.Value, pushForce));
+            characterDamageReceiver.TryTakeDamage(new DamageInfo(_owner.Transform, _owner.TeamId, damage, _stuntDuration.Value, pushForce));
         }
 
         private Vector2 CalcPushForce(Transform instigator)

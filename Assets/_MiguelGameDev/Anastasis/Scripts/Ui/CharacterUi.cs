@@ -6,13 +6,11 @@ namespace MiguelGameDev.Anastasis
     public class CharacterUi : MonoBehaviour
     {
         [SerializeField] BillboardCanvas _billboard;
-        //[SerializeField] IntegerAttributeText _healthText;
         [SerializeField] IntegerProgressBar _healthProgressBar;
 
         public void Setup(Camera camera, IntegerAttribute maxHealth, IntegerAttribute health)
         {
-            _billboard.Setup(Camera.main);
-            //_healthText.Bind(health);
+            _billboard.Setup(camera);
             _healthProgressBar.Bind(maxHealth, health);
         }
     }

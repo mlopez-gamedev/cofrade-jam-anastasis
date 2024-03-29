@@ -1,51 +1,72 @@
-﻿using Sirenix.OdinInspector;
-using System;
+﻿using Cysharp.Threading.Tasks;
+using Sirenix.OdinInspector;
+using UnityEngine;
 
 namespace MiguelGameDev.Anastasis
 {
     public class PlayerExperience
     {
-        int _baseExperienceNeeded;
-        int _experienceIncrement;
+        [ShowInInspector] int _maxLevel = 120;
+        [ShowInInspector] int _baseExperienceNeeded = 0;
+        [ShowInInspector] int _experienceIncrement = 100;
 
-        private readonly PlayerLevelUpUseCase _playerLevelUpUseCase;
-        private int _currentLevel;
-        private int _nextLevelExperience;
-        private int _currentExperience;
+        [ShowInInspector] private readonly PlayerLevelUpUseCase _playerLevelUpUseCase;
+        [ShowInInspector] private readonly IntegerAttribute _currentLevel;
+        [ShowInInspector] private readonly IntegerAttribute _currentExperience;
+        [ShowInInspector] private readonly IntegerAttribute _nextLevelExperience;
 
-        public PlayerExperience(PlayerLevelUpUseCase playerLevelUpUseCase)
+        [ShowInInspector] public int CurrentLevel => _currentLevel.Value;
+
+        public PlayerExperience(PlayerLevelUpUseCase playerLevelUpUseCase, IntegerAttribute currentLevel, IntegerAttribute currentExperience, IntegerAttribute nextLevelExperience)
         {
             _playerLevelUpUseCase = playerLevelUpUseCase;
+            _currentLevel = currentLevel;
+            _currentExperience = currentExperience;
+            _nextLevelExperience = nextLevelExperience;
+        }
+
+        public void Init()
+        {
+            _currentLevel.Value = 1;
+            UpdateNextLevelExperience();
         }
 
         public void AddExperience(int experience)
         {
-            _currentExperience += experience;
-            CheckLevelUp();
+            _currentExperience.Value += experience;
         }
 
-        private void CheckLevelUp()
+        public UniTask CheckLevelUp()
         {
-            if (_currentExperience < _nextLevelExperience)
+            if (_currentLevel.Value == _maxLevel)
             {
-                return;
+                return UniTask.CompletedTask;
             }
 
-            LevelUp();
+            if (_currentExperience.Value < _nextLevelExperience.Value)
+            {
+                return UniTask.CompletedTask;
+            }
+
+            return LevelUp();
         }
 
         [Button]
-        private void LevelUp()
+        private UniTask LevelUp()
         {
-            ++_currentLevel;
+            ++_currentLevel.Value;
             UpdateNextLevelExperience();
 
-            _playerLevelUpUseCase.LevelUp();
+            return _playerLevelUpUseCase.LevelUp();
         }
 
         private void UpdateNextLevelExperience()
         {
-            
+            if (_currentLevel.Value == _maxLevel)
+            {
+                return;
+            }
+            _nextLevelExperience.Value = _baseExperienceNeeded + _experienceIncrement * (int)Mathf.Pow(_currentLevel.Value, 1.5f);
         }
     }
 }

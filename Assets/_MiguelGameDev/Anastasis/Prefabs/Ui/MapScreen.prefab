@@ -539,7 +539,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: -12, y: 12}
-  m_SizeDelta: {x: 200, y: 150}
+  m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 1, y: 0}
 --- !u!222 &8786765693889502362
 CanvasRenderer:
@@ -620,7 +620,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _map: {fileID: 8723063704992483919}
   _worldSize: {x: 1000, y: 1000}
-  _visibleWorldRatio: {x: 0.4, y: 0.3}
+  _visibleWorldRatio: {x: 1, y: 1}
   _playerMarker: {fileID: 4684012026876534344}
   _targetMarker: {fileID: 5794671040075888438}
 --- !u!1 &9207983723514540472

@@ -99,7 +99,7 @@ namespace MiguelGameDev.Anastasis
             return true;
         }
 
-        internal bool TryMakeDamage(Collider other)
+        internal bool TryMakeDamage(Transform sacrament, Collider other)
         {
             CharacterDamageReceiver damageReceiver = other.GetComponent<CharacterDamageReceiver>();
             if (damageReceiver == null)
@@ -113,7 +113,7 @@ namespace MiguelGameDev.Anastasis
             }
 
             var pushForce = CalcPushForce(other.transform);
-            damageReceiver.TakeDamage(new DamageInfo(_owner.Transform, _owner.TeamId, _damage.Value, _stuntDuration.Value, pushForce));
+            damageReceiver.TryTakeDamage(new DamageInfo(_owner.Transform, sacrament, _owner.TeamId, _damage.Value, _stuntDuration.Value, pushForce));
             return true;
         }
 

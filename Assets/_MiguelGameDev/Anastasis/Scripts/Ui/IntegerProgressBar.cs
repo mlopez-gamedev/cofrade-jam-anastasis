@@ -1,5 +1,4 @@
 using UnityEngine;
-using System;
 using DG.Tweening;
 using Sirenix.OdinInspector;
 using System.Collections.Generic;
@@ -73,12 +72,12 @@ namespace MiguelGameDev.Anastasis
             {
                 line = _createdFrameLines[index];
                 line.gameObject.SetActive(true);
-                line.SetAnchoredPositionX(position);
+                line.SetAnchorX(position);
                 return;
             }
 
             line = Instantiate(_frameLinePrefab, _frameLineContainer);
-            line.SetAnchoredPositionX(position);
+            line.SetAnchorX(position);
         }
 
         private void CleanFrameLine(int fromIndex)
@@ -98,7 +97,7 @@ namespace MiguelGameDev.Anastasis
             }
 
             var normalizedValue = Mathf.Clamp01((float)_value.Value / _maxValue.Value);
-            _downBar.SetAnchoredPositionX(normalizedValue);
+            _downBar.SetAnchorMaxX(normalizedValue);
             _upBar.anchorMax = _downBar.anchorMax;
 
             UpdateFrameLines();
@@ -143,11 +142,11 @@ namespace MiguelGameDev.Anastasis
             {
                 gameObject.SetActive(true);
             }
-            _downBar.SetAnchoredPositionX(normalizedValue);
+            _downBar.SetAnchorMaxX(normalizedValue);
+            _upBar.anchorMax = _downBar.anchorMax;
             
-            var duration = distance * _progressSpeed;
-
-            _tween = _upBar.DOAnchorMax(_downBar.anchorMax, duration).SetEase(Ease.InQuad);
+            //var duration = distance * _progressSpeed;
+            //_tween = _upBar.DOAnchorMax(_downBar.anchorMax, duration).SetEase(Ease.InQuad);
         }
 
         private void ProgressDown(float normalizedValue, float distance)
@@ -157,7 +156,7 @@ namespace MiguelGameDev.Anastasis
                 _tween.Kill(true);
             }
 
-            _upBar.SetAnchoredPositionX(normalizedValue);
+            _upBar.SetAnchorMaxX(normalizedValue);
 
             var duration = distance / _progressSpeed;
 
@@ -179,8 +178,8 @@ namespace MiguelGameDev.Anastasis
 
         private void OnDestroy()
         {
-            _maxValue.Unsubscribe(OnMaxValueChange);
-            _value.Unsubscribe(OnValueChange);
+            _maxValue?.Unsubscribe(OnMaxValueChange);
+            _value?.Unsubscribe(OnValueChange);
         }
     }
 }

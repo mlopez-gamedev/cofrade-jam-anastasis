@@ -27,17 +27,25 @@ MonoBehaviour:
     - _rotateAngularSpeed: 2
       _cycleDuration: 3
       _maxDistance: 2
-    _damage: 3
+    _damage: 1
   - _units:
     - _rotateAngularSpeed: 2
       _cycleDuration: 2.7
       _maxDistance: 2
-    _damage: 6
+    _damage: 2
   - _units:
     - _rotateAngularSpeed: 3
       _cycleDuration: 2.4
       _maxDistance: 2
-    _damage: 10
+    _damage: 4
+  - _units:
+    - _rotateAngularSpeed: 3
+      _cycleDuration: 2.4
+      _maxDistance: 3
+    - _rotateAngularSpeed: 3
+      _cycleDuration: 2.4
+      _maxDistance: 3
+    _damage: 6
   - _units:
     - _rotateAngularSpeed: 3
       _cycleDuration: 2.4
@@ -47,21 +55,13 @@ MonoBehaviour:
       _maxDistance: 3
     _damage: 10
   - _units:
-    - _rotateAngularSpeed: 3
-      _cycleDuration: 2.4
+    - _rotateAngularSpeed: 5
+      _cycleDuration: 2.1
       _maxDistance: 3
-    - _rotateAngularSpeed: 3
-      _cycleDuration: 2.4
+    - _rotateAngularSpeed: 5
+      _cycleDuration: 2.1
       _maxDistance: 3
     _damage: 13
-  - _units:
-    - _rotateAngularSpeed: 5
-      _cycleDuration: 2.1
-      _maxDistance: 3
-    - _rotateAngularSpeed: 5
-      _cycleDuration: 2.1
-      _maxDistance: 3
-    _damage: 15
   - _units:
     - _rotateAngularSpeed: 5
       _cycleDuration: 2.1

@@ -74,7 +74,7 @@ namespace MiguelGameDev.Anastasis
         {
             _cooldown.Value = _levels[_currentLevel].Cooldown;
             _maxDistance.Value = _levels[_currentLevel].MaxDistance;
-            _damage.Value = Mathf.CeilToInt(_levels[0].Damage * _damageMultiplier.Value);
+            _damage.Value = Mathf.CeilToInt(_levels[_currentLevel].Damage * _damageMultiplier.Value);
             _size.Value = _levels[_currentLevel].Size;
             _duration.Value = _levels[_currentLevel].Duration;
 
@@ -96,20 +96,20 @@ namespace MiguelGameDev.Anastasis
             return true;
         }
 
-        public void TryMakeDamage(Collider other)
+        public bool TryMakeDamage(Collider other)
         {
             CharacterDamageReceiver damageReceiver = other.GetComponent<CharacterDamageReceiver>();
             if (damageReceiver == null)
             {
-                return;
+                return false;
             }
 
             if (_owner.TeamId == damageReceiver.TeamId)
             {
-                return;
+                return false;
             }
 
-            damageReceiver.TakeDamage(new DamageInfo(_owner.Transform, _owner.TeamId, _damage.Value));
+            return damageReceiver.TryTakeDamage(new DamageInfo(_owner.Transform, null, _owner.TeamId, _damage.Value));
         }
 
         internal override void Release()

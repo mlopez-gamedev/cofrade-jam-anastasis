@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace MiguelGameDev.Anastasis
 {
+
     public class CharacterDamageReceiver : MonoBehaviour
     {
         [ShowInInspector, HideInEditorMode] int _teamId;
@@ -20,19 +21,20 @@ namespace MiguelGameDev.Anastasis
             _takeDamageUseCase = takeDamageUseCase;
         }
 
-        public void TakeDamage(DamageInfo damageInfo)
+        public bool TryTakeDamage(DamageInfo damageInfo)
         {
             if (Time.time < _invulnerabilityEndTime) 
             {
-                return;
+                return false;
             }
 
             if (!_takeDamageUseCase.TakeDamage(damageInfo))
             {
-                return;
+                return false;
             }
 
             _invulnerabilityEndTime = Time.time + _invulnerabilityDuration.Value;
+            return true;
         }
     }
 }

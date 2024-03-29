@@ -2,10 +2,14 @@
 
 namespace MiguelGameDev.Anastasis
 {
+
     public class PlayerDieUseCase : CharacterDieUseCase
     {
-        public PlayerDieUseCase(CharacterMotor motor, CharacterAnimation animation, CharacterAudio audio) : base(motor, animation, audio)
+        private GameDirector _gameDirector;
+
+        public PlayerDieUseCase(GameDirector gameDirector, CharacterMotor motor, CharacterAnimation animation, CharacterAudio audio, CharacterUi characterUi) : base(motor, animation, audio, characterUi)
         {
+            _gameDirector = gameDirector;
         }
 
         public override async UniTask<bool> CharacterDie()
@@ -16,7 +20,7 @@ namespace MiguelGameDev.Anastasis
                 return false;
             }
 
-            // end game
+            _gameDirector.PlayerDie();
 
             return true;
         }

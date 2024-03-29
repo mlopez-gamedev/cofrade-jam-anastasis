@@ -31,7 +31,6 @@ namespace MiguelGameDev.Anastasis
             _actionText.gameObject.SetActive(false);
         }
 
-
         internal void Setup(AudioService audio)
         {
             _audio = audio;
@@ -87,16 +86,20 @@ namespace MiguelGameDev.Anastasis
                 return;
             }
 
-            var input = Input.GetAxis("Horizontal");
+            var input = GetSelectInput();
             if (input > 0)
             {
-                _audio.PlaySelectSfx();
-                SelectNext();
+                if (SelectNext())
+                {
+                    _audio.PlaySelectSfx();
+                }
             }
             else if (input < 0)
             {
-                _audio.PlaySelectSfx();
-                SelectPrevious();
+                if (SelectPrevious())
+                {
+                    _audio.PlaySelectSfx();
+                }
             }
             else if (Input.GetButton("Action"))
             {
@@ -110,11 +113,33 @@ namespace MiguelGameDev.Anastasis
             }
         }
 
-        private void SelectNext()
+        private float GetSelectInput()
+        {
+            var input = Input.GetAxis("Horizontal");
+            if (input != 0)
+            {
+                return input;
+            }
+
+            if (Input.GetKey(KeyCode.LeftArrow) | Input.GetKey(KeyCode.A))
+            {
+                return -1f;
+            }
+
+            if (Input.GetKey(KeyCode.RightArrow) | Input.GetKey(KeyCode.D))
+            {
+                return 1f;
+            }
+
+
+            return input;
+        }
+
+        private bool SelectNext()
         {
             if (Time.unscaledTime < _nextSelectTime)
             {
-                return;
+                return false;
             }
 
             var index = _selectedAbilityPanelIndex + 1;
@@ -125,13 +150,14 @@ namespace MiguelGameDev.Anastasis
 
             Select(index);
             _nextSelectTime = Time.unscaledTime + 0.5f;
+            return true;
         }
 
-        private void SelectPrevious()
+        private bool SelectPrevious()
         {
             if (Time.unscaledTime < _nextSelectTime)
             {
-                return;
+                return false;
             }
 
             var index = _selectedAbilityPanelIndex - 1;
@@ -142,6 +168,7 @@ namespace MiguelGameDev.Anastasis
 
             Select(index);
             _nextSelectTime = Time.unscaledTime + 0.5f;
+            return true;
         }
 
         private void Select(int index)

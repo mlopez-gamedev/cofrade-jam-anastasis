@@ -14,9 +14,10 @@ namespace MiguelGameDev.Anastasis
             _playerPickAbilityUseCase = playerPickAbilityUseCase;
         }
 
-        public void LevelUp()
+        public async UniTask LevelUp()
         {
-            _playerPickAbilityUseCase.PickRandomAbility(_characterAbilities).Forget();
+            await UniTask.WaitForSeconds(0.6f); //Wait so yo can see die the enemy
+            await _playerPickAbilityUseCase.PickRandomAbility(_characterAbilities);
         }
     }
 }

@@ -34,9 +34,14 @@ namespace MiguelGameDev.Anastasis
             transform.rotation = Quaternion.identity;
         }
 
-        private void OnTriggerStay(Collider other)
+        private void OnTriggerEnter(Collider other)
         {
-            _ability.TryMakeDamage(other);
+            _ability.TryAddTarget(other);
+        }
+
+        private void OnTriggerExit(Collider other)
+        {
+            _ability.TryRemoveTarget(other);
         }
 
         private void OnDestroy()

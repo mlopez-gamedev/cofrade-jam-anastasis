@@ -1,6 +1,8 @@
 ﻿using Sirenix.OdinInspector;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 namespace MiguelGameDev.Anastasis
 {
@@ -30,9 +32,12 @@ namespace MiguelGameDev.Anastasis
         private readonly IntegerAttribute _unitsAmount;
         private readonly List<HolySpiritUnitData> _unitsData;
         private readonly IntegerAttribute _damage;
+        private readonly FloatAttribute _cooldown;
         private readonly FloatAttribute _damageMultiplier;
 
         private HolySpiritAvatar _avatar;
+
+        private Dictionary<Collider, DamageOverTime> _blessingCharacters;
 
         public override int MaxLevel => _levels.Length - 1;
 
@@ -44,6 +49,8 @@ namespace MiguelGameDev.Anastasis
             _avatarPrefab = config.HolySpiritAvatar;
             _levels = config.Levels;
 
+            _blessingCharacters = new Dictionary<Collider, DamageOverTime>();
+
             _damageMultiplier = owner.PlayerAttributes.DamageMultiplier;
             _minDistanceMultiplier = config.MinDistanceMultiplier;
 
@@ -51,6 +58,7 @@ namespace MiguelGameDev.Anastasis
             _unitsData = new List<HolySpiritUnitData>();
 
             _damage = new IntegerAttribute(Mathf.CeilToInt(_levels[0].Damage * _damageMultiplier.Value));
+            _cooldown = new FloatAttribute(1f); // SI alguien permanece cerca dele spiritu debería poder seguir recibiendo daño. 
             _damageMultiplier.Subscribe(OnDamageMultiplierChange);
         }
 
@@ -94,10 +102,19 @@ namespace MiguelGameDev.Anastasis
         public override bool Update()
         {
             _avatar?.Tick();
-            return false;
+
+            bool didDamage = false;
+            foreach (DamageOverTime damageOverTime in _blessingCharacters.Values)
+            {
+                if (damageOverTime.TryMakeDamage())
+                {
+                    didDamage = true;
+                }
+            }
+            return didDamage;
         }
 
-        internal void TryMakeDamage(Collider other)
+        internal void TryAddTarget(Transform spirit, Collider other)
         {
             CharacterDamageReceiver damageReceiver = other.GetComponent<CharacterDamageReceiver>();
             if (damageReceiver == null)
@@ -110,7 +127,21 @@ namespace MiguelGameDev.Anastasis
                 return;
             }
 
-            damageReceiver.TakeDamage(new DamageInfo(_owner.Transform, _owner.TeamId, _damage.Value));
+            Assert.IsFalse(_blessingCharacters.ContainsKey(other));
+
+            var damageOverTime = new DamageOverTime(damageReceiver, _owner.Transform, spirit, _owner.TeamId, _damage, _cooldown);
+
+            _blessingCharacters.Add(other, damageOverTime);
+        }
+
+        public void TryRemoveTarget(Collider other)
+        {
+            if (!_blessingCharacters.ContainsKey(other))
+            {
+                return;
+            }
+
+            _blessingCharacters.Remove(other);
         }
 
         internal override void Release()

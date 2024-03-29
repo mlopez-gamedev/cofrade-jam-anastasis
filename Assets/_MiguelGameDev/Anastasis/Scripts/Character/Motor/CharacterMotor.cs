@@ -38,6 +38,16 @@ namespace MiguelGameDev.Anastasis
             _velocity = velocity.ToVector3XZ().normalized * _speed.Value;
         }
 
+        public void SetVelocity(Vector3 velocity)
+        {
+            if (!_enable)
+            {
+                return;
+            }
+
+            _velocity = velocity.normalized * _speed.Value;
+        }
+
         internal async void Push(Vector2 pushForce)
         {
             _enable = false;

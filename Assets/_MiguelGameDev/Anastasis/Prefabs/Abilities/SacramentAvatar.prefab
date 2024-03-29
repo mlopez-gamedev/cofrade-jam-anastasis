@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7473479861002969938}
   - component: {fileID: 6438396745368617462}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SacramentAvatar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47,6 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _projectile: {fileID: 3825999184334286680}
   _audioSource: {fileID: 1352559582374369781}
+  _collider: {fileID: 2763644474212980484}
 --- !u!1 &919152572771326492
 GameObject:
   m_ObjectHideFlags: 0
@@ -59,8 +60,9 @@ GameObject:
   - component: {fileID: 3641318406378948795}
   - component: {fileID: 4523931536080589933}
   - component: {fileID: 1352559582374369781}
-  - component: {fileID: 6006086675792283579}
-  m_Layer: 0
+  - component: {fileID: 117384777887648441}
+  - component: {fileID: 2763644474212980484}
+  m_Layer: 7
   m_Name: SacramentVfx
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4937,7 +4939,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
---- !u!135 &6006086675792283579
+--- !u!135 &117384777887648441
 SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4952,12 +4954,24 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.25
+  m_Radius: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2763644474212980484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919152572771326492}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9af9a119e0ad18c45b9ca9740d9225c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3868296792743150178
 GameObject:
   m_ObjectHideFlags: 0
@@ -4969,7 +4983,7 @@ GameObject:
   - component: {fileID: 7814480978059876450}
   - component: {fileID: 3727010479124920911}
   - component: {fileID: 4216633471512784823}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SparkTrail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9775,7 +9789,7 @@ GameObject:
   - component: {fileID: 2917985335208391068}
   - component: {fileID: 6062791421605992606}
   - component: {fileID: 6205215860162422908}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: FireGlowTrail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14545,7 +14559,7 @@ GameObject:
   - component: {fileID: 3263915356440613844}
   - component: {fileID: 1990440489399885951}
   - component: {fileID: 4506245500456470814}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SmokeTrail
   m_TagString: Untagged
   m_Icon: {fileID: 0}

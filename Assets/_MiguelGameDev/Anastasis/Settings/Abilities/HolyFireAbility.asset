@@ -25,27 +25,27 @@ MonoBehaviour:
     _damage: 0
     _size: 0
     _duration: 0
-  - _cooldown: 6
+  - _cooldown: 4
     _maxDistance: 2
     _damage: 1
     _size: 1
     _duration: 1
-  - _cooldown: 5
+  - _cooldown: 3.5
     _maxDistance: 3
     _damage: 1
     _size: 1.25
     _duration: 1.2
-  - _cooldown: 4
+  - _cooldown: 3
     _maxDistance: 3
     _damage: 2
     _size: 1.5
     _duration: 1.2
-  - _cooldown: 4
+  - _cooldown: 2.5
     _maxDistance: 3.5
     _damage: 3
     _size: 2
     _duration: 1.4
-  - _cooldown: 3
+  - _cooldown: 2.5
     _maxDistance: 3.5
     _damage: 4
     _size: 2.5

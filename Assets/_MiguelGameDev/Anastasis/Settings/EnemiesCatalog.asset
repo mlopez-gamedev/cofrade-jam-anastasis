@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec26c558dd0be5e4ea759069499fdf68, type: 3}
+  m_Name: EnemiesCatalog
+  m_EditorClassIdentifier: 
+  _baseSpeed: 0
+  _baseMaxHealth: 0
+  _baseInvulnerabilityDuration: 0
+  _baseTouchDamage: 1
+  _baseDamageMultiplier: 1
+  _enemies:
+  - {fileID: 11400000, guid: 1904f7c2bb30ec64ba69eeca5f24f14d, type: 2}
+  - {fileID: 11400000, guid: 98c7d19022397934287caa6d6652af34, type: 2}
+  - {fileID: 11400000, guid: da98d284c907a9b4e8f99debabb8d488, type: 2}
+  - {fileID: 11400000, guid: a718b4a371eb6c34dba1fd242d65cdb0, type: 2}
+  - {fileID: 11400000, guid: bd0e5f878590b034a93b031f18707f4e, type: 2}
+  - {fileID: 11400000, guid: 2d846b71eacced74688a7f99d40d4f79, type: 2}
+  - {fileID: 11400000, guid: 1a2f98326c9cbae49a1bfbf76003d160, type: 2}
+  - {fileID: 11400000, guid: dc74cba4f4e06ee41b96694b86a4c659, type: 2}
