@@ -109,7 +109,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &3888402433736421628
 RectTransform:
   m_ObjectHideFlags: 0
@@ -183,7 +183,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68356c3764ad390429ddad9e48ce8c31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: {x: 32, y: 32, z: 32, w: 32}
+  radius: {x: 8, y: 8, z: 8, w: 8}
 --- !u!114 &106867048953227255
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -519,7 +519,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &8723063704992483919
 RectTransform:
   m_ObjectHideFlags: 0
@@ -605,7 +605,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68356c3764ad390429ddad9e48ce8c31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: {x: 12, y: 12, z: 12, w: 12}
+  radius: {x: 4, y: 4, z: 4, w: 4}
 --- !u!114 &2020039416620867695
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -623,7 +623,6 @@ MonoBehaviour:
   _visibleWorldRatio: {x: 0.4, y: 0.3}
   _playerMarker: {fileID: 4684012026876534344}
   _targetMarker: {fileID: 5794671040075888438}
-  _visibleWorldSize: {x: 400, y: 300}
 --- !u!1 &9207983723514540472
 GameObject:
   m_ObjectHideFlags: 0

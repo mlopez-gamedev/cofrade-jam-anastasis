@@ -21,6 +21,8 @@ namespace MiguelGameDev.Anastasis
         [SerializeField, BoxGroup("Player")] private AbilityCatalog _abilityCatalog;
         [SerializeField, BoxGroup("Environment")] private Transform _terrain;
 
+        [SerializeField, BoxGroup("Test")] private Transform _testGoal;
+
         // Start is called before the first frame update
         void Start()
         {
@@ -29,7 +31,7 @@ namespace MiguelGameDev.Anastasis
 
         private UniTask Install()
         {
-            var playerGoals = new PlayerGoals();
+            var playerGoals = new PlayerGoals(_testGoal);
 
             var playerAttributes = new PlayerAttributes(
                     new FloatAttribute(_playerSettings.BaseSpeed),

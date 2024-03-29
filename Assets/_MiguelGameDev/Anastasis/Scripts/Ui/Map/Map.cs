@@ -29,9 +29,7 @@ namespace MiguelGameDev.Anastasis
             var mapSize = _map.rect.size;
             _halfMapSize = mapSize / 2f;
 
-            _mapScale = mapSize * _visibleWorldRatio / _worldSize;
-
-            Debug.Log(_map.rect.size);
+            _mapScale = mapSize  / (_worldSize * _visibleWorldRatio);
         }
 
         public abstract void Tick();

@@ -23,9 +23,13 @@ namespace MiguelGameDev.Anastasis
                 _targetMarker.gameObject.SetActive(false);
                 return;
             }
-            _targetMarker.gameObject.SetActive(true);
 
-            UpdateMarker(_playerGoals.Target, _playerMarker);
+            if (!_targetMarker.gameObject.activeSelf)
+            {
+                _targetMarker.gameObject.SetActive(true);
+            }
+
+            UpdateMarker(_playerGoals.Target, _targetMarker);
         }
 
         private void UpdateMarker(Transform actor, RectTransform marker)
@@ -43,7 +47,7 @@ namespace MiguelGameDev.Anastasis
                 _targetMarker.SetScale(1f);
             }
 
-            marker.anchoredPosition = actorMarkerPosition;
+            marker.anchoredPosition = finalTargetMarkerPosition;
         }
     }
 }

@@ -5,8 +5,6 @@ namespace MiguelGameDev.Anastasis
 {
     public class PlayerCenteredMap : Map
     {
-        [SerializeField] protected Vector2 _visibleWorldSize = new Vector2(400f, 300f);
-
         private Vector2 _backgroundOffset;
 
         public override void Tick()
@@ -28,7 +26,10 @@ namespace MiguelGameDev.Anastasis
                 _targetMarker.gameObject.SetActive(false);
                 return;
             }
-            _targetMarker.gameObject.SetActive(true);
+            if (!_targetMarker.gameObject.activeSelf)
+            {
+                _targetMarker.gameObject.SetActive(true);
+            }
 
             var targetPosition = _playerGoals.Target.position.XZToVector2();
             var targetMarkerPosition = targetPosition * _mapScale + _backgroundOffset;
@@ -43,7 +44,7 @@ namespace MiguelGameDev.Anastasis
                 _targetMarker.SetScale(1f);
             }
 
-            _targetMarker.anchoredPosition = targetMarkerPosition;
+            _targetMarker.anchoredPosition = finalTargetMarkerPosition;
         }
     }
 }
