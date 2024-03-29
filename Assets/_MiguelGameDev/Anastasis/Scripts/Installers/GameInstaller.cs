@@ -11,6 +11,7 @@ namespace MiguelGameDev.Anastasis
 
         [SerializeField, BoxGroup("Audio")] private AudioService _audio;
         [SerializeField, BoxGroup("Ui")] private ScreensMediator _screensMediator;
+        [SerializeField, BoxGroup("Camera")] private Camera _camera;
         [SerializeField, BoxGroup("Camera")] private CameraPositioner _cameraPositioner;
         [SerializeField, BoxGroup("Camera")] private Vector3 _titlePosition = new Vector3(0, 0, -14f);
         [SerializeField, BoxGroup("Camera")] private Vector3 _gamePosition = new Vector3(0, 0, -14f);
@@ -44,7 +45,7 @@ namespace MiguelGameDev.Anastasis
 
             var pickAbilityUseCase = new PlayerPickAbilityUseCase(_screensMediator, _abilityCatalog);
 
-            _player.Setup(JESUS_TEAM_ID, playerAttributes, abilityFactory, pickAbilityUseCase);
+            _player.Setup(JESUS_TEAM_ID, playerAttributes, abilityFactory, _camera, pickAbilityUseCase);
 
             var initGameUseCase = new InitGameUseCase(_screensMediator, _cameraPositioner, _followerCamera, _player, _audio, pickAbilityUseCase);
 

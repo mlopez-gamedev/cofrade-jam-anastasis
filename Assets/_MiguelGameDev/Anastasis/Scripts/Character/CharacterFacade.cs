@@ -6,6 +6,7 @@ namespace MiguelGameDev.Anastasis
     public class CharacterFacade : MonoBehaviour
     {
         [SerializeField] protected CharacterController _characterController;
+        [SerializeField] protected CharacterUi _characterUi;
 
         [SerializeField] protected CharacterAnimation _animation;
         [SerializeField] protected CharacterAudio _audio;
@@ -23,6 +24,11 @@ namespace MiguelGameDev.Anastasis
         public CharacterHealth Health => _health;
         public CharacterAttributes Attributes => _attributes;
 
+        private void Awake()
+        {
+            _characterUi.gameObject.SetActive(false);
+        }
+
         public void WakeUp()
         {
             _animation.WakeUp();
@@ -30,6 +36,7 @@ namespace MiguelGameDev.Anastasis
 
         public void Init()
         {
+            _characterUi.gameObject.SetActive(true);
             _input.Init();
             _motor.Init();
         }
@@ -40,10 +47,16 @@ namespace MiguelGameDev.Anastasis
             _motor.Update();
         }
 
-        protected virtual void OnDestroy()
+        public virtual void Stop()
         {
+            _characterUi.gameObject.SetActive(false);
             _input?.SetEnable(false);
             _motor?.Stop();
+        }
+
+        private void OnDestroy()
+        {
+            Stop();
         }
     }
 }

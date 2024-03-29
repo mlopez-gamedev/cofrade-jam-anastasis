@@ -1168,6 +1168,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _audio: {fileID: 1227096784}
   _screensMediator: {fileID: 1625832589}
+  _camera: {fileID: 330585545}
   _cameraPositioner: {fileID: 330585548}
   _titlePosition: {x: 0, y: 1, z: -14}
   _gamePosition: {x: 0, y: 60, z: -40}
@@ -1761,15 +1762,15 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1925347466003782553, guid: 18618bd23d515b440a0f9a34a44c1d2d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2435727343851454215, guid: 18618bd23d515b440a0f9a34a44c1d2d,
         type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 3438585834698989502, guid: 18618bd23d515b440a0f9a34a44c1d2d,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4953437080012316043, guid: 18618bd23d515b440a0f9a34a44c1d2d,
         type: 3}
@@ -1820,6 +1821,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5074471403720259575, guid: 18618bd23d515b440a0f9a34a44c1d2d,
+        type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -14,8 +14,10 @@ namespace MiguelGameDev.Anastasis
         public CharacterAbilities Abilities => _abilities;
         public PlayerExperience Experience => _experience;
 
-        public void Setup(int teamId, CharacterAttributes attributes, AbilityFactory abilityFactory, PlayerPickAbilityUseCase playerPickAbilityUseCase)
+        public void Setup(int teamId, CharacterAttributes attributes, AbilityFactory abilityFactory, Camera camera, PlayerPickAbilityUseCase playerPickAbilityUseCase)
         {
+            _characterUi.Setup(camera, attributes.MaxHealth, attributes.CurrentHealth);
+
             var activateCrownOfThornsUseCase = new ActivateCrownOfThornsUseCase(_crownOfThrons);
 
             _attributes = attributes;
@@ -43,9 +45,9 @@ namespace MiguelGameDev.Anastasis
             _abilities.Update();
         }
 
-        protected override void OnDestroy()
+        public override void Stop()
         {
-            base.OnDestroy();
+            base.Stop();
             _abilities?.Release();
         }
     }
