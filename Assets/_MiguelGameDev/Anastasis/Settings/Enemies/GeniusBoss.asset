@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aae6a01c2d2b2db4599c72eedaf94704, type: 3}
-  m_Name: Death
+  m_Name: GeniusBoss
   m_EditorClassIdentifier: 
-  _baseSpeed: 7
-  _baseMaxHealth: 100
+  _baseSpeed: 6
+  _baseMaxHealth: 150
   _baseInvulnerabilityDuration: 0
-  _baseTouchDamage: 50
-  _baseDamageMultiplier: 10
-  _minLevel: 0
-  _chances: 0
-  _baseExperience: 1000
-  _prefab: {fileID: 9050727323923605590, guid: 9cbd233d1663b3146a8dffd5c2d90a46, type: 3}
+  _baseTouchDamage: 20
+  _baseDamageMultiplier: 1
+  _minLevel: 100
+  _chances: 1
+  _baseExperience: 120
+  _prefab: {fileID: 9050727323923605590, guid: da7bb7742e0c38d4e9fd3251e1525952, type: 3}

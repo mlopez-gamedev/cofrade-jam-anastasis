@@ -19,5 +19,5 @@ MonoBehaviour:
   _baseDamageMultiplier: 1
   _minLevel: 5
   _chances: 5
-  _baseExperience: 35
+  _baseExperience: 20
   _prefab: {fileID: 9050727323923605590, guid: 594044f466107c44ea36c098ae356b31, type: 3}

@@ -14,14 +14,20 @@ namespace MiguelGameDev.Anastasis
 
         private int _currentPlayerLevel;
         private int _currentBossIndex;
-        private int _enemiesKilled;
 
-        private bool _gameAlive;
+        private IntegerAttribute _enemiesKilled;
+        private IntegerAttribute _bossesKilled;
 
-        public GameDirector(PlayerGoals playerGoals, EndGameUseCase endGameUseCase)
+        private bool _isGameAlive;
+
+        public bool IsGameAlive => _isGameAlive;
+
+        public GameDirector(PlayerGoals playerGoals, IntegerAttribute enemiesKilled, IntegerAttribute bossesKilled, EndGameUseCase endGameUseCase)
         {
             _playerGoals = playerGoals;
             _endGameUseCase = endGameUseCase;
+            _enemiesKilled = enemiesKilled;
+            _bossesKilled = bossesKilled;
         }
 
         internal void Setup(PlayerFacade playerFacade, EnemySpawner[] bossSpawners, EnemyWavesSpawner enemyWavesSpawner)
@@ -33,11 +39,11 @@ namespace MiguelGameDev.Anastasis
 
         internal void Init()
         {
-            _enemiesKilled = 0;
+            _enemiesKilled.Value = 0;
 
             SpawnBoss();
             _enemyWavesSpawner.Init();
-            _gameAlive = true;
+            _isGameAlive = true;
         }
 
         public void PlayerDie()
@@ -52,12 +58,12 @@ namespace MiguelGameDev.Anastasis
 
         private void EndGame(bool result)
         {
-            if (!_gameAlive)
+            if (!_isGameAlive)
             {
                 return;
             }
 
-            _gameAlive = false;
+            _isGameAlive = false;
             _endGameUseCase.EndGame(result).Forget();
         }
 
@@ -69,10 +75,11 @@ namespace MiguelGameDev.Anastasis
 
         internal bool PlayerKillEnemy(EnemyFacade enemyFacade)
         {
-            ++_enemiesKilled;
+            ++_enemiesKilled.Value;
             CheckGameDifficult();
             if (_playerGoals.Target == enemyFacade)
             {
+                ++_bossesKilled.Value;
                 if (!NextBoss())
                 {
                     return false;

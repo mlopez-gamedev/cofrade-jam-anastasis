@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: Genius
   m_EditorClassIdentifier: 
   _baseSpeed: 6
-  _baseMaxHealth: 50
+  _baseMaxHealth: 150
   _baseInvulnerabilityDuration: 0
-  _baseTouchDamage: 10
+  _baseTouchDamage: 20
   _baseDamageMultiplier: 1
-  _minLevel: 75
+  _minLevel: 100
   _chances: 1
-  _baseExperience: 500
+  _baseExperience: 120
   _prefab: {fileID: 9050727323923605590, guid: fb4b7be56148f8f4c9aa4328853a6bbd, type: 3}

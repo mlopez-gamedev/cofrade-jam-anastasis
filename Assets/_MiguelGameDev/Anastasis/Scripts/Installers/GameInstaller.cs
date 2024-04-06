@@ -19,7 +19,7 @@ namespace MiguelGameDev.Anastasis
         [SerializeField, BoxGroup("Camera")] private FollowerCamera _followerCamera;
         [SerializeField, BoxGroup("Camera")] private FollowerCameraSettings _followerCameraSettings;
         [SerializeField, BoxGroup("Player")] private PlayerFacade _player;
-        [SerializeField, BoxGroup("Player")] private CharacterSettings _playerSettings;
+        [SerializeField, BoxGroup("Player")] private PlayerSettings _playerSettings;
         [SerializeField, BoxGroup("Player")] private AbilityCatalog _abilityCatalog;
         [SerializeField, BoxGroup("Enemies")] private EnemyCatalog _enemyCatalog;
         [SerializeField, BoxGroup("Enemies")] private EnemyWavesSpawner _enemyWavesSpawner;
@@ -45,9 +45,13 @@ namespace MiguelGameDev.Anastasis
                     new FloatAttribute(_playerSettings.BaseDamageMultiplier),
                     new FloatAttribute(_playerSettings.BaseInvulnerabilityDuration));
 
-           
+
+            var enemiesKilled = new IntegerAttribute(0);
+            var bossesKilled = new IntegerAttribute(0);
+            var totalBosses = new IntegerAttribute(_bossSpawners.Length);
+
             var endGameUseCase = new EndGameUseCase(_player, _enemyWavesSpawner, _screensMediator, _audio);
-            var gameDirector = new GameDirector(playerGoals, endGameUseCase);
+            var gameDirector = new GameDirector(playerGoals, enemiesKilled, bossesKilled, endGameUseCase);
 
             // Abilities
             var pickAbilityUseCase = new PlayerPickAbilityUseCase(_screensMediator, _abilityCatalog);
@@ -57,8 +61,8 @@ namespace MiguelGameDev.Anastasis
 
             // Experience
             var experienceAttributes = new ExperienceAttributes(new IntegerAttribute(1), new IntegerAttribute(0), new IntegerAttribute(0));
-            var playerLevelUpUseCase = new PlayerLevelUpUseCase(abilities, pickAbilityUseCase);
-            var experience = new PlayerExperience(playerLevelUpUseCase, experienceAttributes.CurrentLevel, experienceAttributes.CurrentExperience, experienceAttributes.NextLevelExperience);
+            var playerLevelUpUseCase = new PlayerLevelUpUseCase(gameDirector, abilities, pickAbilityUseCase);
+            var experience = new PlayerExperience(_playerSettings.ExperienceEquationGrades, playerLevelUpUseCase, experienceAttributes.CurrentLevel, experienceAttributes.CurrentExperience, experienceAttributes.NextLevelExperience);
 
             // Player
             _player.Setup(gameDirector, JESUS_TEAM_ID, playerAttributes, experience, abilities, _camera, pickAbilityUseCase);
@@ -80,7 +84,7 @@ namespace MiguelGameDev.Anastasis
             _cameraPositioner.Setup(_titlePosition, _gamePosition);
             _followerCamera.Setup(_followerCameraSettings);
 
-            _screensMediator.Setup(_audio, _player.transform, playerGoals, initGameUseCase);
+            _screensMediator.Setup(_audio, _player.transform, experienceAttributes.CurrentLevel, enemiesKilled, bossesKilled, totalBosses, playerGoals, initGameUseCase);
 
             Init();
             return UniTask.CompletedTask;

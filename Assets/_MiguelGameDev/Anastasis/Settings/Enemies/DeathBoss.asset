@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aae6a01c2d2b2db4599c72eedaf94704, type: 3}
-  m_Name: Guardian
+  m_Name: DeathBoss
   m_EditorClassIdentifier: 
-  _baseSpeed: 3
-  _baseMaxHealth: 50
+  _baseSpeed: 7
+  _baseMaxHealth: 5000
   _baseInvulnerabilityDuration: 0
-  _baseTouchDamage: 5
-  _baseDamageMultiplier: 1.5
-  _minLevel: 25
-  _chances: 3
-  _baseExperience: 30
-  _prefab: {fileID: 9050727323923605590, guid: e8f0e9806ab828e4196e7e6e1b0c67a0, type: 3}
+  _baseTouchDamage: 50
+  _baseDamageMultiplier: 10
+  _minLevel: 0
+  _chances: 0
+  _baseExperience: 0
+  _prefab: {fileID: 9050727323923605590, guid: 9cbd233d1663b3146a8dffd5c2d90a46, type: 3}

@@ -5,8 +5,8 @@ namespace MiguelGameDev.Anastasis
 {
     public class EnemiesFactory
     {
-        private float LEVEL_MULTIPLIER_MULT = 0.25f;
-        private float LEVEL_MULTIPLIER_POW = 1.28f;
+        private float LEVEL_MULTIPLIER_MULT = 0.15f;
+        private float LEVEL_MULTIPLIER_POW = 1.5f;
         private readonly EnemyCatalog _catalog;
         private readonly PlayerKillEnemyUseCase _playerKillEnemyUseCase;
         private readonly int _teamId;
@@ -63,7 +63,7 @@ namespace MiguelGameDev.Anastasis
             // Al nivel 110 (máxima subida del player) quiero un multiplicador de x100,
             // pero no quiero que la primera subida de nivel duplique el multiplicador, así que necesito una subida exponencial
             // El 1,28 me da lo que quiero
-            return LEVEL_MULTIPLIER_MULT + LEVEL_MULTIPLIER_MULT * Mathf.Pow(level - 1, LEVEL_MULTIPLIER_POW);
+            return 1 + LEVEL_MULTIPLIER_MULT * Mathf.Pow(level - 1, LEVEL_MULTIPLIER_POW);
         }
     }
 }

@@ -10,15 +10,16 @@ namespace MiguelGameDev.Anastasis
         [SerializeField, BoxGroup("UI")] private StoryScreen _storyScreen;
         [SerializeField, BoxGroup("UI")] private TutorialScreen _tutorialScreen;
         [SerializeField, BoxGroup("UI")] private PickAbilityScreen _pickAbilityScreen;
-        [SerializeField, BoxGroup("UI")] private MapScreen _mapScreen;
+        [SerializeField, BoxGroup("UI")] private GameScreen _gameScreen;
 
-        public void Setup(AudioService audio, Transform player, PlayerGoals playerGoals, InitGameUseCase initGameUseCase)
+        public void Setup(AudioService audio, Transform player, IntegerAttribute playerLevel, IntegerAttribute enemiesKilled, IntegerAttribute bossesKilled, IntegerAttribute totalBosses,
+             PlayerGoals playerGoals, InitGameUseCase initGameUseCase)
         {
             _titleScreen.Setup(audio, initGameUseCase);
             _storyScreen.Setup(audio);
             _tutorialScreen.Setup(audio);
             _pickAbilityScreen.Setup(audio);
-            _mapScreen.Setup(player, playerGoals);
+            _gameScreen.Setup(player, playerGoals, playerLevel, enemiesKilled, bossesKilled, totalBosses);
         }
 
         internal void Init()
@@ -48,7 +49,7 @@ namespace MiguelGameDev.Anastasis
 
         internal void ShowMap()
         {
-            _mapScreen.Show();
+            _gameScreen.Show();
         }
     }
 }

@@ -86,12 +86,22 @@ namespace MiguelGameDev.Anastasis
                 return;
             }
 
+            if (Input.GetButton("Action"))
+            {
+                _audio.PlayClickSfx();
+                _actionText.gameObject.SetActive(false);
+                _checkInput = false;
+                return;
+            }
+
             var input = GetSelectInput();
+
             if (input > 0)
             {
                 if (SelectNext())
                 {
                     _audio.PlaySelectSfx();
+                    return;
                 }
             }
             else if (input < 0)
@@ -99,13 +109,8 @@ namespace MiguelGameDev.Anastasis
                 if (SelectPrevious())
                 {
                     _audio.PlaySelectSfx();
+                    return;
                 }
-            }
-            else if (Input.GetButton("Action"))
-            {
-                _audio.PlayClickSfx();
-                _actionText.gameObject.SetActive(false);
-                _checkInput = false;
             }
             else
             {
@@ -132,7 +137,7 @@ namespace MiguelGameDev.Anastasis
             }
 
 
-            return input;
+            return 0;
         }
 
         private bool SelectNext()

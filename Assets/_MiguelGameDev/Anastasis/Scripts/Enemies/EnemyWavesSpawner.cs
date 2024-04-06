@@ -29,8 +29,8 @@ namespace MiguelGameDev.Anastasis
             _playerTransform = playerTransform;
             _enemiesFactory = enemiesFactory;
 
-            _spawnCooldownInterpolator = new FloatLinearInterpolator(1, 110, 0.15f, 2f);
-            _maxEnemyAmountInterpolator = new IntegerLinearInterpolator(1, 110, 5, 60);
+            _spawnCooldownInterpolator = new FloatLinearInterpolator(1, 100, 0.2f, 2f);
+            _maxEnemyAmountInterpolator = new IntegerLinearInterpolator(1, 60, 5, 60);
         }
 
         public void Init()

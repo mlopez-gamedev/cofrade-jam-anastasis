@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7af47160392b9740a8fbbf7120ab3c9, type: 3}
+  m_Script: {fileID: 11500000, guid: 05315b48951a42545a910ecee109aacf, type: 3}
   m_Name: PlayerSettings
   m_EditorClassIdentifier: 
   _baseSpeed: 7
@@ -17,3 +17,14 @@ MonoBehaviour:
   _baseInvulnerabilityDuration: 0.5
   _baseTouchDamage: 1
   _baseDamageMultiplier: 1
+  _experienceEquationGrades:
+  - _multiplier: 50
+    _power: 0
+  - _multiplier: 4
+    _power: 1
+  - _multiplier: 3
+    _power: 2
+  - _multiplier: 2
+    _power: 3
+  - _multiplier: 1
+    _power: 4

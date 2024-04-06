@@ -15,9 +15,9 @@ MonoBehaviour:
   _baseSpeed: 3
   _baseMaxHealth: 100
   _baseInvulnerabilityDuration: 0
-  _baseTouchDamage: 5
+  _baseTouchDamage: 10
   _baseDamageMultiplier: 1
   _minLevel: 50
   _chances: 2
-  _baseExperience: 200
+  _baseExperience: 60
   _prefab: {fileID: 9050727323923605590, guid: 3628cae8cb0fa8843aef9adad662c1e4, type: 3}

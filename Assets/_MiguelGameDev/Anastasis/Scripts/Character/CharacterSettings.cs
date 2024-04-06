@@ -2,9 +2,7 @@ using UnityEngine;
 
 namespace MiguelGameDev.Anastasis
 {
-
-    [CreateAssetMenu(menuName = "MiguelGameDev/Anastasis/Character Settings", fileName = "CharacterSettings")]
-    public class CharacterSettings : ScriptableObject
+    public abstract class CharacterSettings : ScriptableObject
     {
         [SerializeField] private float _baseSpeed;
         [SerializeField] private int _baseMaxHealth;

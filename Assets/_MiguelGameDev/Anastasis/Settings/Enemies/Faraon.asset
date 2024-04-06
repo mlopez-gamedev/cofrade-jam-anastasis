@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aae6a01c2d2b2db4599c72eedaf94704, type: 3}
   m_Name: Faraon
   m_EditorClassIdentifier: 
-  _baseSpeed: 5
-  _baseMaxHealth: 80
+  _baseSpeed: 4
+  _baseMaxHealth: 500
   _baseInvulnerabilityDuration: 0
   _baseTouchDamage: 30
   _baseDamageMultiplier: 1
-  _minLevel: 100
+  _minLevel: 10
   _chances: 1
-  _baseExperience: 350
+  _baseExperience: 180
   _prefab: {fileID: 9050727323923605590, guid: 2fb44d2176e1bc1488bd7fc0674db0a8, type: 3}

@@ -131,7 +131,7 @@ MonoBehaviour:
       Description: 
       Languages:
       - This is the body of Christ. It increases the power of whoever feeds on it.
-      - "Este es el cuerpo de Cristo. Aumenta el poder de quien se aliemnte de \xE9l."
+      - "Este es el cuerpo de Cristo. Aumenta el poder de quien se alimente de \xE9l."
       Flags: 0000
       Languages_Touch: []
     - Term: Ability/Host.Title
@@ -252,8 +252,8 @@ MonoBehaviour:
 
         Will this defeat obey an even greater, even more Divine
         Plan of Our Father and Lord Creator Yahweh?'
-      - "Jesucristo ha sucumbido al pecado. Con las puertas del infierno cerradas
-        y los Principes del Infierno bajo aviso, las almas de los mortales estar\xE1n
+      - "Jesucristo ha sucumbido al pecado. Con las puertas del Hades cerradas y
+        los Principes del Infierno bajo aviso, las almas de los mortales estar\xE1n
         condenadas por toda la eternidad.\n\xBFObedecer\xE1 est\xE1 derrota a un
         Plan a\xFAn m\xE1s grande, a\xFAn m\xE1s Divino, de Nuestro Padre y Se\xF1or
         Creador Yahveh?"
@@ -352,6 +352,40 @@ MonoBehaviour:
       - Curar
       Flags: 0000
       Languages_Touch: []
+    - Term: Game/Kills
+      TermType: 0
+      Description: 
+      Languages:
+      - '<size=0.5em>DEMONS DEFEATED</size>
+
+        x{0}'
+      - '<size=0.5em>DEMONIOS DERROTADOS</size>
+
+        x{0}'
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Game/Level
+      TermType: 0
+      Description: 
+      Languages:
+      - '<size=0.5em>LEVEL</size>
+
+        {0}'
+      - '<size=0.5em>NIVEL</size>
+
+        {0}'
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Game/Bosses
+      TermType: 0
+      Description: 
+      Languages:
+      - '<size=0.5em>LORDS OF THE HELL</size>
+
+        {0}/{1}'
+      - "<size=0.5em>SE\xD1ORES DEL INFIERNO</size>\n{0}/{1}"
+      Flags: 0000
+      Languages_Touch: []
     CaseInsensitiveTerms: 0
     OnMissingTranslation: 1
     mTerm_AppName: 
@@ -369,7 +403,7 @@ MonoBehaviour:
     Google_SpreadsheetName: I2Loc cofrade-jam Localization
     Google_LastUpdatedVersion: 1711717992690
     Google_Password: change_this
-    GoogleUpdateFrequency: 3
+    GoogleUpdateFrequency: 1
     GoogleInEditorCheckFrequency: 2
     GoogleUpdateSynchronization: 1
     GoogleUpdateDelay: 0

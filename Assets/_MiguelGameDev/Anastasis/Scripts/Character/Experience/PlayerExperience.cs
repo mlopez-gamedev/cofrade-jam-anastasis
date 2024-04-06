@@ -7,9 +7,7 @@ namespace MiguelGameDev.Anastasis
     public class PlayerExperience
     {
         [ShowInInspector] int _maxLevel = 120;
-        [ShowInInspector] int _baseExperienceNeeded = 20;
-        [ShowInInspector] int _experienceIncrement = 50;
-        [ShowInInspector] int _power = 2;
+        [ShowInInspector] EquationGrade[] _experienceEquationGrades;
 
         [ShowInInspector] private readonly PlayerLevelUpUseCase _playerLevelUpUseCase;
         [ShowInInspector] private readonly IntegerAttribute _currentLevel;
@@ -18,8 +16,9 @@ namespace MiguelGameDev.Anastasis
 
         [ShowInInspector] public int CurrentLevel => _currentLevel.Value;
 
-        public PlayerExperience(PlayerLevelUpUseCase playerLevelUpUseCase, IntegerAttribute currentLevel, IntegerAttribute currentExperience, IntegerAttribute nextLevelExperience)
+        public PlayerExperience(EquationGrade[] experienceEquationGrades, PlayerLevelUpUseCase playerLevelUpUseCase, IntegerAttribute currentLevel, IntegerAttribute currentExperience, IntegerAttribute nextLevelExperience)
         {
+            _experienceEquationGrades = experienceEquationGrades;
             _playerLevelUpUseCase = playerLevelUpUseCase;
             _currentLevel = currentLevel;
             _currentExperience = currentExperience;
@@ -67,7 +66,14 @@ namespace MiguelGameDev.Anastasis
             {
                 return;
             }
-            _nextLevelExperience.Value = _baseExperienceNeeded + _experienceIncrement * (int)Mathf.Pow(_currentLevel.Value, _power);
+
+            float experienceNeeded = 0;
+            foreach (var grade in _experienceEquationGrades)
+            {
+                experienceNeeded += grade.Multiplier * Mathf.Pow(_currentLevel.Value, grade.Power);
+            }
+
+            _nextLevelExperience.Value = Mathf.CeilToInt(experienceNeeded);
         }
     }
 }

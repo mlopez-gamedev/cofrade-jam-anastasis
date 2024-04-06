@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aae6a01c2d2b2db4599c72eedaf94704, type: 3}
   m_Name: Fear
   m_EditorClassIdentifier: 
-  _baseSpeed: 5
-  _baseMaxHealth: 15
+  _baseSpeed: 6
+  _baseMaxHealth: 25
   _baseInvulnerabilityDuration: 0
-  _baseTouchDamage: 10
+  _baseTouchDamage: 15
   _baseDamageMultiplier: 3
-  _minLevel: 25
+  _minLevel: 60
   _chances: 30
-  _baseExperience: 100
+  _baseExperience: 50
   _prefab: {fileID: 9050727323923605590, guid: dc8846b24585a024ca976d225e4e9d20, type: 3}
